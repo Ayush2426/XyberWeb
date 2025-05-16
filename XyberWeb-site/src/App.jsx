@@ -1,5 +1,5 @@
 import React from 'react'
-import LandingPage from './Pages/LandinPage'
+import LandingPage from './Pages/LandingPage'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import WorkshopPage from './Pages/WorkshopPage'
@@ -43,12 +43,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/",
+        path: "/*",
         element: <LandingPage />,
       },
       {
-        index: true,
-        path: "/home",
+        path: "/home/*",
         element: <LandingPage />,
       },
       {
@@ -60,7 +59,7 @@ const router = createBrowserRouter([
         element: <Gallery/>,
       },
       {
-        path: "/blog",
+        path: "/blog/*",
         element: <Blog/>
       },
       {

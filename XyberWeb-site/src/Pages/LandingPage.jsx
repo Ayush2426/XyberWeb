@@ -27,7 +27,7 @@ const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navLinks = [
-        { path: "/", label: "Home" },
+        { path: "/home/*", label: "Home" },
         { path: "/workshops", label: "Workshops" },
         { path: "/gallery", label: "Gallery" },
         { path: "/blog", label: "Blog" },
@@ -105,18 +105,6 @@ const Navbar = () => {
                     </button>
                 </div>
             </div>
-
-            {/* Mobile Menu Overlay */}
-            {/* CSS for .mobile-menu:
-                - Position: fixed or absolute to cover screen
-                - Top, Left, Right, Bottom: 0
-                - Width, Height: 100% or 100vw/vh
-                - Background color (with opacity or solid)
-                - Z-index: high enough to be on top
-                - Display: flex, flex-direction: column for items
-                - Transition for smooth open/close (e.g., transform: translateX)
-                - Overflow-y: auto if content exceeds screen height
-            */}
             {isMobileMenuOpen && (
                 <div className="mobile-menu">
                     <div className="mobile-menu-items"> {/* CSS: Padding, alignment for items */}
@@ -156,7 +144,7 @@ const PageSection = ({ title, children }) => (
 );
 
 // --- Page Components (Placeholders) ---
-const HomePage = () => (
+export const HomePage = () => (
     <PageSection title="Welcome to Student Tech Workshops - XyberWeb">
         <div className="hero-section"> {/* CSS: Full-width or contained, background, padding */}
             <h2 className="hero-title">Ignite Your Tech Future</h2>
@@ -164,6 +152,7 @@ const HomePage = () => (
             <Link to="/workshops" className="hero-button-link"> {/* Use Link for navigation buttons */}
                 <button className="hero-button">Explore Workshops</button>
             </Link>
+            <br />
         </div>
         <div className="mission-highlight"> {/* CSS: Styling for mission section */}
             <h3 className="mission-title">Our Mission</h3>
@@ -246,7 +235,7 @@ export default function App() { // Renamed to App for clarity, can be LandingPag
                 <Navbar /> {/* Navbar now gets theme from context */}
                 <main className="main-content"> {/* CSS: Flex-grow: 1 for footer pushing, padding */}
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/*" element={<HomePage />} />
                         <Route path="/workshops" element={<WorkshopsPage />} />
                         <Route path="/gallery" element={<GalleryPage />} />
                         <Route path="/blog" element={<BlogPage />} />
@@ -260,7 +249,7 @@ export default function App() { // Renamed to App for clarity, can be LandingPag
                 </main>
                 <footer className="footer"> {/* CSS: Basic footer styling, padding, text-align */}
                     <p className="footer-text">
-                        &copy; {new Date().getFullYear()} XyberWeb-Patna. All rights reserved.
+                        © {new Date().getFullYear()} XyberWeb-Patna. All rights reserved.
                     </p>
                     <p className="footer-subtext">
                         Empowering Bihar's Future Tech Leaders.

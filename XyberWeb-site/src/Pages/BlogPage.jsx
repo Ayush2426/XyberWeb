@@ -25,7 +25,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { path: "/", label: "Home" },
+    { path: "/home/*", label: "Home" },
     { path: "/workshops", label: "Workshops" },
     { path: "/gallery", label: "Gallery" },
     { path: "/blog", label: "Blog" },
@@ -381,17 +381,14 @@ export default function Blog() {
           </Routes>
         </main>
         {/* Footer with custom class */}
-        <footer className="app-footer"> {/* Replaced Tailwind classes */}
-          <p className="footer-text">
-            © {new Date().getFullYear()} XyberWeb. All rights reserved.
-          </p>
-          <p className="footer-subtext">
-            Empowering Bihar's Future Tech Leaders.
-          </p>
-          <p className="footer-signature">
-            Designed with passion in Patna.
-          </p>
-        </footer>
+                <footer className="footer">
+                    <p className="footer-text">
+                        © {new Date().getFullYear()} © XyberWeb-Patna@2025. All rights reserved.
+                    </p>
+                    <p className="footer-subtext">
+                        Empowering Bihar's Future Tech Leaders.
+                    </p>
+                </footer>
       </div>
     </ThemeContext.Provider>
   );

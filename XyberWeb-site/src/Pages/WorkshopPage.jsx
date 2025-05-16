@@ -1,6 +1,6 @@
 // App.js
 import React, { useState, useEffect, createContext } from 'react';
-import { Sun, Moon, Laptop, Menu, X, ShieldCheck, BarChart3, BrainCircuit, Bot, Code, SearchCheck, MessageSquareQuote } from 'lucide-react';
+import { Sun, Moon, Laptop, Menu, X, ShieldCheck, BarChart3, LayoutGrid, CodeXml, BrainCircuit, Bot, Code, SearchCheck, MessageSquareQuote } from 'lucide-react';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 // Theme Context
 const ThemeContext = createContext();
@@ -24,7 +24,7 @@ const Navbar = ({ currentTheme, setTheme }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     // const navItems = ['Home', 'Workshops', 'Gallery', 'Blog', 'Feedback', 'Contact', 'About', 'Register'];
     const navLinks = [
-        { path: "/", label: "Home" }, // Assuming Home is at the root
+        { path: "/home/*", label: "Home" }, // Assuming Home is at the root
         { path: "/workshops", label: "Workshops" },
         { path: "/gallery", label: "Gallery" },
         { path: "/blog", label: "Blog" },
@@ -42,6 +42,24 @@ const Navbar = ({ currentTheme, setTheme }) => {
             <Icon size={20} />
         </button>
     );
+
+
+            // Effect to handle body scroll when mobile menu is open/closed
+            useEffect(() => {
+                if (isMobileMenuOpen) {
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+                } else {
+                    document.body.style.overflow = 'unset'; // Allow scrolling when menu is closed
+                }
+                // Cleanup function to reset overflow if the component unmounts while menu is open
+                return () => {
+                    document.body.style.overflow = 'unset';
+                };
+            }, [isMobileMenuOpen]);
+        
+            const handleMobileLinkClick = () => {
+                setIsMobileMenuOpen(false); // Close mobile menu on link click
+            };
 
     return (
         <nav className="navbar">
@@ -66,11 +84,13 @@ const Navbar = ({ currentTheme, setTheme }) => {
                         <ThemeButton mode="system" Icon={Laptop} />
                     </div>
                 </div>
-                <div className="mobile-menu-button-container">
+                {/* Mobile Menu Button */}
+                <div className="mobile-menu-button-container"> {/* CSS: Hide on desktop, display on mobile */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="mobile-menu-button"
-                        aria-label="Open main menu"
+                        aria-label="Toggle main menu"
+                        aria-expanded={isMobileMenuOpen}
                     >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
@@ -78,14 +98,17 @@ const Navbar = ({ currentTheme, setTheme }) => {
             </div>
             {isMobileMenuOpen && (
                 <div className="mobile-menu">
-                    <div className="mobile-menu-items">
-                        {navItems.map((item) => (
-                            <button
-                                key={item}
-                                className={`mobile-navbar-link ${item === 'Workshops' ? 'mobile-navbar-link-active' : ''}`} // Highlight "Workshops"
+                    <div className="mobile-menu-items"> {/* CSS: Padding, alignment for items */}
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.path}
+                                to={link.path}
+                                className={({ isActive }) => isActive ? "mobile-navbar-link mobile-navbar-link-active" : "mobile-navbar-link"}
+                                onClick={handleMobileLinkClick} // Ensures menu closes on navigation
+                                end={link.path === "/"}
                             >
-                                {item}
-                            </button>
+                                {link.label}
+                            </NavLink>
                         ))}
                         <div className="mobile-theme-switcher">
                             <ThemeButton mode="light" Icon={Sun} />
@@ -211,7 +234,20 @@ const WorkshopsPage = () => {
             title: "Prompt Engineering",
             description: "Master the art of writing effective prompts to get better responses from AI tools.",
             colorClass: "workshop-card-pink"
+        },
+                {
+            icon: <CodeXml size={40} className="workshop-card-icon" />,
+            title: "Web Development",
+            description: "Master the art of writing effective prompts to get better responses from AI tools.",
+            colorClass: "workshop-card-brown"
+        },
+                {
+            icon: <LayoutGrid size={40} className="workshop-card-icon" />,
+            title: "App Development",
+            description: "Master the art of writing effective prompts to get better responses from AI tools.",
+            colorClass: "workshop-card-white"
         }
+        
     ];
 
     return (
