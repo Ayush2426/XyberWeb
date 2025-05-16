@@ -215,36 +215,42 @@ const WorkshopsPage = () => {
             colorClass: "workshop-card-purple"
         },
         {
+            slug: "ml-robotics",
             icon: <Bot size={40} className="workshop-card-icon" />,
             title: "Machine Learning & Robotics",
             description: "Build and program smart robots. Learn simple AI and hardware programming.",
             colorClass: "workshop-card-red"
         },
         {
+            slug: "python",
             icon: <Code size={40} className="workshop-card-icon" />,
             title: "Python Programming",
             description: "Learn Python by creating games and solving puzzles. Easy syntax and beginner-friendly.",
             colorClass: "workshop-card-yellow"
         },
         {
+            slug: "google-dorking",
             icon: <SearchCheck size={40} className="workshop-card-icon" />,
             title: "Google Dorking (Advanced Search)",
             description: "Learn powerful Google search tricks to find public data ethically.",
             colorClass: "workshop-card-indigo"
         },
         {
+            slug: "prompt-engineering",
             icon: <MessageSquareQuote size={40} className="workshop-card-icon" />,
             title: "Prompt Engineering",
             description: "Master the art of writing effective prompts to get better responses from AI tools.",
             colorClass: "workshop-card-pink"
         },
         {
+            slug: "web-dev",
             icon: <CodeXml size={40} className="workshop-card-icon" />,
             title: "Web Development",
             description: "Master the art of writing effective prompts to get better responses from AI tools.",
             colorClass: "workshop-card-brown"
         },
-                {
+        {
+            slug: "app-dev",
             icon: <LayoutGrid size={40} className="workshop-card-icon" />,
             title: "App Development",
             description: "Master the art of writing effective prompts to get better responses from AI tools.",

@@ -787,3 +787,247 @@ body.dark .icon-color-purple {
 
 /* Add any other styles that are EXCLUSIVELY for the Generative AI page here. */
 
+/* MlRoboticsWorkshopStyles.css */
+
+/* This file contains styles specific to the Machine Learning & Robotics Workshop Page.
+  It should be used in conjunction with BaseWorkshopStyles.css, 
+  which contains all common styles for workshop pages.
+*/
+
+/* --- Machine Learning & Robotics Specific Styles --- */
+
+/* Icon color for the ML & Robotics page header */
+.icon-color-red {
+    color: var(--red-500); /* Uses variable from BaseWorkshopStyles.css */
+}
+
+body.dark .icon-color-red {
+    /* Define a specific shade for dark mode if --red-500 doesn't contrast well, 
+       or use a lighter red variable if defined in BaseWorkshopStyles.css */
+    color: #f87171; /* Example: Tailwind's red-400 */
+}
+
+/* Page-specific styles for the ML & Robotics details page container, if any */
+.ml-robotics-details-page .workshop-header-icon-wrapper {
+    /* Example: If this page needed a different icon background */
+    /* background-color: #fee2e2; */ /* Example: Tailwind's red-100 */
+}
+
+/* body.dark .ml-robotics-details-page .workshop-header-icon-wrapper { */
+    /* background-color: #991b1b; */ /* Example: Tailwind's red-800 */
+/* } */
+
+/* Add any other styles that are EXCLUSIVELY for the ML & Robotics page here. */
+
+/* PythonProgrammingWorkshopStyles.css */
+
+/* This file contains styles specific to the Python Programming Workshop Page.
+  It should be used in conjunction with BaseWorkshopStyles.css, 
+  which contains all common styles for workshop pages.
+*/
+
+/* --- Python Programming Specific Styles --- */
+
+/* Define yellow color variables if not already in BaseWorkshopStyles.css,
+   or ensure they are present there. For this example, let's assume they might be new.
+*/
+:root {
+    --yellow-100: #fef9c3; /* Example: Tailwind yellow-100 */
+    --yellow-400: #facc15; /* Example: Tailwind yellow-400 */
+    --yellow-500: #eab308; /* Example: Tailwind yellow-500 */
+    --yellow-800: #854d0e; /* Example: Tailwind yellow-800 */
+}
+
+
+/* Icon color for the Python Programming page header */
+.icon-color-yellow {
+    color: var(--yellow-500); 
+}
+
+body.dark .icon-color-yellow {
+    color: var(--yellow-400); 
+}
+
+/* Page-specific styles for the Python Programming details page container, if any */
+.python-programming-details-page .workshop-header-icon-wrapper {
+    /* Example: If this page needed a different icon background */
+    /* background-color: var(--yellow-100); */
+}
+
+/* body.dark .python-programming-details-page .workshop-header-icon-wrapper { */
+    /* background-color: var(--yellow-800); */
+/* } */
+
+/* Add any other styles that are EXCLUSIVELY for the Python Programming page here. */
+
+/* GoogleDorkingWorkshopStyles.css */
+
+/* This file contains styles specific to the Google Dorking (Advanced Search) Workshop Page.
+  It should be used in conjunction with BaseWorkshopStyles.css, 
+  which contains all common styles for workshop pages.
+*/
+
+/* --- Google Dorking (Advanced Search) Specific Styles --- */
+
+/* Define indigo color variables if not already in BaseWorkshopStyles.css,
+   or ensure they are present there. 
+*/
+:root {
+    --indigo-100: #e0e7ff; /* Example: Tailwind indigo-100 */
+    --indigo-400: #818cf8; /* Example: Tailwind indigo-400 */
+    --indigo-500: #6366f1; /* Example: Tailwind indigo-500 */
+    --indigo-800: #3730a3; /* Example: Tailwind indigo-800 */
+}
+
+
+/* Icon color for the Google Dorking page header */
+.icon-color-indigo {
+    color: var(--indigo-500); 
+}
+
+body.dark .icon-color-indigo {
+    color: var(--indigo-400); 
+}
+
+/* Page-specific styles for the Google Dorking details page container, if any */
+.google-dorking-details-page .workshop-header-icon-wrapper {
+    /* Example: If this page needed a different icon background */
+    /* background-color: var(--indigo-100); */
+}
+
+/* body.dark .google-dorking-details-page .workshop-header-icon-wrapper { */
+    /* background-color: var(--indigo-800); */
+/* } */
+
+/* Add any other styles that are EXCLUSIVELY for the Google Dorking page here. */
+
+/* PromptEngineeringWorkshopStyles.css */
+
+/* This file contains styles specific to the Prompt Engineering Workshop Page.
+  It should be used in conjunction with BaseWorkshopStyles.css, 
+  which contains all common styles for workshop pages.
+*/
+
+/* --- Prompt Engineering Specific Styles --- */
+
+/* Define pink color variables if not already in BaseWorkshopStyles.css,
+   or ensure they are present there. 
+*/
+:root {
+    --pink-100: #fce7f3; /* Example: Tailwind pink-100 */
+    --pink-400: #f472b6; /* Example: Tailwind pink-400 */
+    --pink-500: #ec4899; /* Example: Tailwind pink-500 */
+    --pink-800: #9d174d; /* Example: Tailwind pink-800 */
+}
+
+
+/* Icon color for the Prompt Engineering page header */
+.icon-color-pink {
+    color: var(--pink-500); 
+}
+
+body.dark .icon-color-pink {
+    color: var(--pink-400); 
+}
+
+/* Page-specific styles for the Prompt Engineering details page container, if any */
+.prompt-engineering-details-page .workshop-header-icon-wrapper {
+    /* Example: If this page needed a different icon background */
+    /* background-color: var(--pink-100); */
+}
+
+/* body.dark .prompt-engineering-details-page .workshop-header-icon-wrapper { */
+    /* background-color: var(--pink-800); */
+/* } */
+
+/* Add any other styles that are EXCLUSIVELY for the Prompt Engineering page here. */
+
+/* WebDevelopmentWorkshopStyles.css */
+
+/* This file contains styles specific to the Web Development Workshop Page.
+  It should be used in conjunction with BaseWorkshopStyles.css, 
+  which contains all common styles for workshop pages.
+*/
+
+/* --- Web Development Specific Styles --- */
+
+/* Define brown-ish color variables if not already in BaseWorkshopStyles.css,
+   or ensure they are present there. 
+   Using a teal/cyan as an alternative for a "techy" feel if brown is hard to theme.
+   Let's go with a distinct color like a teal or a warm orange.
+   The original card was "workshop-card-brown". Let's try a brown.
+*/
+:root {
+    --brown-100: #fdf2e9; /* Example: A light peachy brown */
+    --brown-400: #f59e0b; /* Example: Amber/Orange as a highlight for brown */
+    --brown-500: #a16207; /* Example: A darker, more saturated brown (Tailwind amber-700) */
+    --brown-600: #854d0e; /* Example: Tailwind amber-800 */
+    --brown-800: #713f12; /* Example: A very dark brown */
+}
+
+
+/* Icon color for the Web Development page header */
+.icon-color-brown { /* Changed from icon-color-orange to icon-color-brown */
+    color: var(--brown-500); 
+}
+
+body.dark .icon-color-brown {
+    color: var(--brown-400); 
+}
+
+/* Page-specific styles for the Web Development details page container, if any */
+.web-development-details-page .workshop-header-icon-wrapper {
+    /* Example: If this page needed a different icon background */
+    /* background-color: var(--brown-100); */
+}
+
+/* body.dark .web-development-details-page .workshop-header-icon-wrapper { */
+    /* background-color: var(--brown-800); */
+/* } */
+
+/* Add any other styles that are EXCLUSIVELY for the Web Development page here. */
+
+/* AppDevelopmentWorkshopStyles.css */
+
+/* This file contains styles specific to the App Development Workshop Page.
+  It should be used in conjunction with BaseWorkshopStyles.css, 
+  which contains all common styles for workshop pages.
+*/
+
+/* --- App Development Specific Styles --- */
+
+/* Define slate (grayish) color variables if not already in BaseWorkshopStyles.css,
+   or ensure they are present there. 
+   The original card was "workshop-card-white", so a neutral but distinct icon color is suitable.
+*/
+:root {
+    --slate-100: #f1f5f9; /* Example: Tailwind slate-100 */
+    --slate-400: #94a3b8; /* Example: Tailwind slate-400 */
+    --slate-500: #64748b; /* Example: Tailwind slate-500 */
+    --slate-800: #1e293b; /* Example: Tailwind slate-800 */
+}
+
+
+/* Icon color for the App Development page header */
+.icon-color-slate { 
+    color: var(--slate-500); 
+}
+
+body.dark .icon-color-slate {
+    color: var(--slate-400); 
+}
+
+/* Page-specific styles for the App Development details page container, if any */
+.app-development-details-page .workshop-header-icon-wrapper {
+    /* Example: If this page needed a different icon background */
+    /* background-color: var(--slate-100); */
+}
+
+/* body.dark .app-development-details-page .workshop-header-icon-wrapper { */
+    /* background-color: var(--slate-800); */
+/* } */
+
+/* Add any other styles that are EXCLUSIVELY for the App Development page here. */
+
+
+
