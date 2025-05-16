@@ -194,18 +194,21 @@ const HomePage = () => (
 const WorkshopsPage = () => {
     const workshops = [
         {
+            slug: "cyber-security-essentials",
             icon: <ShieldCheck size={40} className="workshop-card-icon" />,
             title: "Cyber Security Essentials",
             description: "Learn how to be a digital detective! Explore online safety, ethical hacking basics, and how to protect your data.",
             colorClass: "workshop-card-blue"
         },
         {
+            slug: "power-bi",
             icon: <BarChart3 size={40} className="workshop-card-icon" />,
             title: "Power BI (Data Visualization)",
             description: "Turn data into colorful charts and dashboards. Work with real data to tell stories with graphs.",
             colorClass: "workshop-card-green"
         },
         {
+            slug: "Ai-Modules",
             icon: <BrainCircuit size={40} className="workshop-card-icon" />,
             title: "Generative AI & Agentic AI",
             description: "Experiment with AI tools that create art and text. Understand how AI 'thinks'.",
@@ -235,7 +238,7 @@ const WorkshopsPage = () => {
             description: "Master the art of writing effective prompts to get better responses from AI tools.",
             colorClass: "workshop-card-pink"
         },
-                {
+        {
             icon: <CodeXml size={40} className="workshop-card-icon" />,
             title: "Web Development",
             description: "Master the art of writing effective prompts to get better responses from AI tools.",
@@ -265,7 +268,7 @@ const WorkshopsPage = () => {
                         </div>
                         <h3 className="workshop-card-title">{workshop.title}</h3>
                         <p className="workshop-card-description">{workshop.description}</p>
-                        <button className="workshop-card-button">Learn More</button>
+                        <Link to={`/${workshop.slug}`}><button className="workshop-card-button">Learn More</button></Link>
                     </div>
                 ))}
             </div>

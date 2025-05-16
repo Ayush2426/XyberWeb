@@ -1,0 +1,789 @@
+/* BaseWorkshopStyles.css */
+
+/* Global Variables & Base Styles */
+:root {
+    --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    
+    /* Light Theme Colors */
+    --bg-light: #f9fafb; /* gray-50 */
+    --text-primary-light: #1f2937; /* gray-800 */
+    --text-secondary-light: #4b5563; /* gray-600 */
+    --card-bg-light: #ffffff;
+    --border-light: #e5e7eb; /* gray-200 */
+    --modal-backdrop-light: rgba(0, 0, 0, 0.6);
+    --input-bg-light: #ffffff;
+    --input-border-light: #d1d5db; /* gray-300 */
+    --placeholder-light: #9ca3af; /* gray-400 */
+
+    /* Dark Theme Colors */
+    --bg-dark: #111827; /* gray-900 */
+    --text-primary-dark: #f3f4f6; /* gray-100 */
+    --text-secondary-dark: #9ca3af; /* gray-400 */
+    --card-bg-dark: #1f2937; /* gray-800 */
+    --border-dark: #374151; /* gray-700 */
+    --modal-backdrop-dark: rgba(0, 0, 0, 0.7);
+    --input-bg-dark: #b1cfff; /* gray-700 */
+    --input-border-dark: #4b5563; /* gray-600 */
+    --placeholder-dark: #6b7280; /* gray-500 */
+
+    /* Accent Colors (Examples - match your theme) */
+    --blue-100: #dbeafe;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-900: #312e81; /* Corrected from --blue-900: #1e3a8a; to match a darker blue if needed */
+    
+    --green-100: #d1fae5;
+    --green-400: #34d399;
+    --green-500: #10b981;
+    --green-600: #059669;
+    --green-900: #065f46;
+
+    --purple-500: #8b5cf6;
+    --red-500: #ef4444;
+    --teal-500: #14b8a6;
+
+    /* Shadows (Tailwind inspired) */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0,0,0,0.05);
+}
+
+body {
+    font-family: var(--font-family-sans);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light theme defaults */
+body {
+    background-color: var(--bg-light);
+    color: var(--text-primary-light);
+}
+
+/* Dark theme overrides */
+body.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-primary-dark);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--modal-backdrop-light); /* Light mode backdrop */
+    backdrop-filter: blur(4px);
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+.modal-overlay.modal-open {
+    opacity: 1;
+    visibility: visible;
+}
+body.dark .modal-overlay {
+    background-color: var(--modal-backdrop-dark); /* Dark mode backdrop */
+}
+
+.modal-content {
+    background-color: var(--card-bg-light);
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-xl);
+    padding: 1.5rem; /* p-6 */
+    width: 100%;
+    max-width: 28rem; /* max-w-md */
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s ease-out;
+}
+.modal-overlay.modal-open .modal-content { /* For entry animation */
+    transform: scale(1);
+}
+body.dark .modal-content {
+    background-color: var(--card-bg-dark);
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 0.75rem; /* top-3 */
+    right: 0.75rem; /* right-3 */
+    color: #6b7280; /* gray-500 */
+    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+.modal-close-button:hover {
+    color: #374151; /* gray-700 */
+}
+body.dark .modal-close-button {
+    color: var(--text-secondary-dark); /* gray-400 */
+}
+body.dark .modal-close-button:hover {
+    color: var(--text-primary-dark); /* gray-200 */
+}
+
+/* Pre-Registration Form Styles */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space-y-4 */
+}
+.form-label {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    color: #374151; /* gray-700 */
+    margin-bottom: 0.25rem; /* mb-1 */
+}
+body.dark .form-label {
+    color: var(--text-secondary-dark); /* gray-300 */
+}
+
+.form-input-container {
+    position: relative;
+}
+.form-input-icon {
+    position: absolute;
+    left: 0.75rem; /* left-3 */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af; /* gray-400 */
+    pointer-events: none; /* So it doesn't interfere with input focus */
+}
+body.dark .form-input-icon {
+    color: #6b7280; /* gray-500 */
+}
+
+.form-input {
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding and border don't increase width */
+    padding-left: 2.5rem; /* pl-10 */
+    padding-right: 0.75rem; /* pr-3 */
+    padding-top: 0.625rem; /* py-2.5 */
+    padding-bottom: 0.625rem;
+    border: 1px solid var(--input-border-light);
+    border-radius: 0.375rem; /* rounded-md */
+    box-shadow: var(--shadow-sm); /* shadow-sm */
+    background-color: var(--input-bg-light);
+    color: var(--text-primary-light);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-input::placeholder {
+    color: var(--placeholder-light);
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* ring-blue-500 like */
+}
+body.dark .form-input {
+    border-color: var(--input-border-dark);
+    background-color: var(--input-bg-dark);
+    color: var(--text-primary-dark);
+}
+body.dark .form-input::placeholder {
+    color: var(--placeholder-dark);
+}
+body.dark .form-input:focus {
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.form-error {
+    font-size: 0.875rem; /* text-sm */
+    color: #dc2626; /* red-600 */
+}
+body.dark .form-error {
+    color: #f87171; /* red-400 */
+}
+
+.form-submit-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue-600);
+    color: white;
+    font-weight: 600; /* font-semibold */
+    padding: 0.75rem 1rem; /* py-3 px-4 */
+    border-radius: 0.375rem; /* rounded-md */
+    box-shadow: var(--shadow-md);
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+.form-submit-button:hover {
+    background-color: var(--blue-700);
+    box-shadow: var(--shadow-lg);
+}
+.form-submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.form-submit-button .button-icon { /* For Send icon or spinner */
+    margin-right: 0.5rem; /* mr-2 */
+}
+.spinner {
+    animation: spin 1s linear infinite;
+    width: 1.25rem; /* h-5 w-5 */
+    height: 1.25rem;
+    /* margin-right: 0.75rem; /* mr-3 - Handled by button-icon class */
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Image Gallery Styles */
+.gallery-section {
+    margin-bottom: 2rem; /* mb-8 */
+}
+.gallery-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--text-primary-light);
+    margin-bottom: 1rem; /* mb-4 */
+    display: flex;
+    align-items: center;
+}
+body.dark .gallery-title {
+    color: var(--text-primary-dark);
+}
+.gallery-title-icon {
+    margin-right: 0.75rem; /* mr-3 */
+    color: var(--blue-500); /* Default icon color, can be overridden */
+}
+
+.gallery-container {
+    background-color: #f3f4f6; /* gray-100 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-inner);
+    padding: 0.5rem; /* p-2 */
+}
+body.dark .gallery-container {
+    background-color: #374151; /* gray-700 */
+}
+@media (min-width: 768px) { /* md: */
+    .gallery-container {
+        padding: 1rem; /* md:p-4 */
+    }
+}
+
+.gallery-selected-image-wrapper {
+    margin-bottom: 1rem; /* mb-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+.gallery-selected-image {
+    display: block; /* Remove extra space below image */
+    width: 100%;
+    height: 16rem; /* h-64 */
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+.gallery-selected-image:hover {
+    transform: scale(1.05);
+}
+@media (min-width: 768px) { /* md: */
+    .gallery-selected-image {
+        height: 24rem; /* md:h-96 */
+    }
+}
+
+.gallery-thumbnails-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem; /* gap-2 */
+}
+@media (min-width: 640px) { /* sm: */
+    .gallery-thumbnails-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (min-width: 768px) { /* md: */
+    .gallery-thumbnails-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.gallery-thumbnail-button {
+    border-radius: 0.375rem; /* rounded-md */
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    border: 2px solid transparent; /* For focus and selected state */
+    padding: 0;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+    background: none;
+}
+.gallery-thumbnail-button:hover {
+    opacity: 1;
+}
+.gallery-thumbnail-button:focus {
+    outline: none;
+    border-color: var(--blue-500);
+    opacity: 1;
+}
+.gallery-thumbnail-button.selected {
+    opacity: 1;
+    border-color: var(--blue-500);
+}
+
+.gallery-thumbnail-image {
+    display: block; /* Remove extra space below image */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Workshop Info Page Layout Styles */
+.workshop-page-container {
+    min-height: 100vh;
+    /* background-color and color set by body light/dark theme */
+    padding: 2rem 1rem; /* py-8 px-4 */
+}
+@media (min-width: 640px) { /* sm: */
+    .workshop-page-container {
+        padding-left: 1.5rem; /* sm:px-6 */
+        padding-right: 1.5rem;
+    }
+}
+@media (min-width: 1024px) { /* lg: */
+    .workshop-page-container {
+        padding-left: 2rem; /* lg:px-8 */
+        padding-right: 2rem;
+    }
+}
+
+.workshop-max-width-wrapper {
+    max-width: 56rem; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.workshop-header {
+    margin-bottom: 2.5rem; /* mb-10 */
+    text-align: center;
+}
+.workshop-header-icon-wrapper {
+    display: inline-block;
+    padding: 1rem; /* p-4 */
+    background-color: var(--blue-100); 
+    border-radius: 9999px; /* rounded-full */
+    margin-bottom: 1rem; /* mb-4 */
+}
+body.dark .workshop-header-icon-wrapper {
+    background-color: var(--blue-900); 
+}
+.workshop-header-icon {
+    /* Default color is set by specific icon color class like .icon-color-blue */
+    /* Fallback or general icon styling if needed */
+}
+
+.workshop-title {
+    font-size: 2.25rem; /* text-4xl */
+    line-height: 2.5rem;
+    font-weight: 700; /* font-bold */
+    color: var(--text-primary-light); /* Handled by body theme */
+    margin-bottom: 0.75rem; /* mb-3 */
+}
+body.dark .workshop-title {
+    color: var(--text-primary-dark);
+}
+@media (min-width: 768px) { /* md: */
+    .workshop-title {
+        font-size: 3rem; /* md:text-5xl */
+        line-height: 1;
+    }
+}
+
+.workshop-intro {
+    font-size: 1.125rem; /* text-lg */
+    color: var(--text-secondary-light); /* Handled by body theme */
+    max-width: 42rem; /* max-w-2xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+body.dark .workshop-intro {
+    color: var(--text-secondary-dark);
+}
+
+.workshop-content-grid {
+    display: grid;
+    gap: 2rem; /* gap-8 */
+    margin-bottom: 2.5rem; /* mb-10 */
+}
+@media (min-width: 768px) { /* md: */
+    .workshop-content-grid {
+        grid-template-columns: repeat(3, 1fr); /* md:grid-cols-3 */
+    }
+}
+
+.workshop-details-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* space-y-8 */
+}
+@media (min-width: 768px) { /* md: */
+    .workshop-details-column {
+        grid-column: span 2 / span 2; /* md:col-span-2 */
+    }
+}
+
+.workshop-meta-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space-y-6 */
+}
+@media (min-width: 768px) { /* md: */
+    /* No specific change, it will naturally take the remaining column */
+}
+
+.content-card {
+    background-color: var(--card-bg-light);
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: var(--shadow-lg);
+}
+body.dark .content-card {
+    background-color: var(--card-bg-dark);
+}
+
+.card-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--text-primary-light); /* Handled by body theme */
+    margin-bottom: 1rem; /* mb-4 */
+    display: flex;
+    align-items: center;
+}
+body.dark .card-title {
+    color: var(--text-primary-dark);
+}
+.card-title-icon {
+    margin-right: 0.75rem; /* mr-3 */
+}
+.learn-icon { color: var(--green-500); }
+.takeaway-icon { color: var(--purple-500); }
+.video-icon { color: var(--red-500); }
+.trainer-icon { color: var(--teal-500); }
+
+
+.card-list {
+    list-style: disc;
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* space-y-2 */
+    color: var(--text-secondary-light); 
+    padding-left: 0.5rem; /* pl-2 */
+}
+body.dark .card-list {
+    color: var(--text-secondary-dark); 
+}
+.card-list li {
+    line-height: 1.6;
+}
+
+
+.meta-card-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--text-primary-light); /* Handled by body theme */
+    margin-bottom: 1rem; /* mb-4 */
+}
+body.dark .meta-card-title {
+    color: var(--text-primary-dark);
+}
+
+.meta-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* space-y-3 */
+    font-size: 0.875rem; /* text-sm */
+    color: var(--text-secondary-light); 
+}
+body.dark .meta-info-list {
+    color: var(--text-secondary-dark); 
+}
+.meta-item {
+    display: flex;
+    align-items: center;
+}
+.meta-item strong {
+    margin-right: 0.25rem;
+    font-weight: 600;
+}
+.meta-item-icon {
+    margin-right: 0.75rem; /* mr-3 */
+    color: #6b7280; /* gray-500 */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+body.dark .meta-item-icon {
+    color: var(--placeholder-dark); /* Using placeholder color for icons in dark mode */
+}
+
+
+.primary-action-button {
+    width: 100%;
+    background-color: var(--blue-600);
+    color: white;
+    font-weight: 600; /* font-semibold */
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-md);
+    transition: all 0.15s ease-in-out;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.primary-action-button:hover {
+    background-color: var(--blue-700);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+.primary-action-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5), var(--shadow-lg); 
+}
+
+/* Video Section */
+.video-section {
+    margin-bottom: 2.5rem; /* mb-10 */
+}
+.video-wrapper { 
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    background-color: #e5e7eb; /* gray-200 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+body.dark .video-wrapper {
+    background-color: #374151; /* gray-700 */
+}
+.video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Trainer Section */
+.trainer-section-card { 
+    margin-bottom: 2.5rem; /* mb-10 */
+    padding: 1.5rem; 
+}
+@media (min-width: 768px) { 
+    .trainer-section-card {
+        padding: 2rem; 
+    }
+}
+.trainer-card-title { 
+    margin-bottom: 1.5rem; 
+}
+
+.trainer-info-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; 
+}
+@media (min-width: 640px) { 
+    .trainer-info-flex {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.trainer-image {
+    width: 8rem; 
+    height: 8rem; 
+    border-radius: 9999px; 
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--border-light); 
+}
+body.dark .trainer-image {
+    border-color: var(--border-dark); 
+}
+
+.trainer-details {
+    text-align: center;
+    flex-grow: 1; /* Allow text to take available space */
+}
+@media (min-width: 640px) { 
+    .trainer-details {
+        text-align: left;
+    }
+}
+
+.trainer-name {
+    font-size: 1.25rem; 
+    font-weight: 700; 
+    color: var(--text-primary-light); 
+}
+body.dark .trainer-name {
+    color: var(--text-primary-dark);
+}
+.trainer-role {
+    color: var(--blue-600);
+    margin-bottom: 0.5rem; 
+}
+body.dark .trainer-role {
+    color: var(--blue-400);
+}
+.trainer-bio {
+    color: var(--text-secondary-light); 
+    line-height: 1.625; 
+}
+body.dark .trainer-bio {
+    color: var(--text-secondary-dark); 
+}
+
+/* Final Call to Action Button */
+.final-cta-container {
+    text-align: center;
+    margin-top: 3rem; 
+    margin-bottom: 1.5rem; 
+}
+.final-cta-button { 
+    background-color: var(--green-500);
+    color: white;
+    font-weight: 600; 
+    padding: 0.75rem 2rem; 
+    border-radius: 0.5rem; 
+    box-shadow: var(--shadow-md);
+    transition: all 0.15s ease-in-out;
+    border: none;
+    cursor: pointer;
+    font-size: 1.125rem; 
+}
+.final-cta-button:hover {
+    background-color: var(--green-600);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+.final-cta-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5), var(--shadow-lg); 
+}
+
+/* Modal Success Message */
+.modal-success-content {
+    text-align: center;
+    padding: 1rem; 
+}
+.modal-success-icon {
+    color: var(--green-500);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem; 
+}
+.modal-success-title {
+    font-size: 1.25rem; 
+    font-weight: 600; 
+    color: var(--text-primary-light); 
+    margin-bottom: 0.5rem; 
+}
+body.dark .modal-success-title {
+    color: var(--text-primary-dark);
+}
+.modal-success-message {
+    color: var(--text-secondary-light); 
+}
+body.dark .modal-success-message {
+    color: var(--text-secondary-dark); 
+}
+.modal-success-close-button {
+    margin-top: 1.5rem; 
+    background-color: var(--blue-500);
+    color: white;
+    font-weight: 500; 
+    padding: 0.5rem 1rem; 
+    border-radius: 0.375rem; 
+    transition: background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+.modal-success-close-button:hover {
+    background-color: var(--blue-600);
+}
+
+/* Modal Pre-Registration Title */
+.modal-prereg-title {
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    color: var(--text-primary-light); 
+    margin-bottom: 0.25rem; 
+}
+body.dark .modal-prereg-title {
+    color: var(--text-primary-dark);
+}
+.modal-workshop-name {
+    color: var(--blue-600);
+    font-weight: 500; 
+    font-size: 1.125rem; 
+    margin-bottom: 1.5rem; 
+}
+body.dark .modal-workshop-name {
+    color: var(--blue-400);
+}
+
+/* Default Icon Color Class (used if workshopData.iconColorClass is not more specific) */
+.icon-color-blue { 
+    color: var(--blue-600) !important; /* Use !important if it's a generic fallback that might be overridden */
+}
+body.dark .icon-color-blue { 
+    color: var(--blue-400) !important;
+}
+
+/* Gen AI Css */
+/* GenerativeAiWorkshopStyles.css */
+
+/* This file contains styles specific to the Generative AI & Agentic AI Workshop Page.
+  It should be used in conjunction with BaseWorkshopStyles.css, 
+  which contains all common styles for workshop pages.
+*/
+
+/* --- Generative AI & Agentic AI Specific Styles --- */
+
+/* Icon color for the Generative AI page header */
+.icon-color-purple {
+    color: var(--purple-500); /* Uses variable from BaseWorkshopStyles.css */
+}
+
+body.dark .icon-color-purple {
+    /* Define a specific shade for dark mode if --purple-500 doesn't contrast well, 
+       or use a lighter purple variable if defined in BaseWorkshopStyles.css */
+    color: #a78bfa; /* Example: Tailwind's purple-400 */
+}
+
+/* Page-specific styles for the Generative AI details page container, if any */
+.generative-ai-details-page .workshop-header-icon-wrapper {
+    /* Example: If this page needed a different icon background */
+    /* background-color: #ede9fe; */ /* Example: Tailwind's purple-100 */
+}
+
+/* body.dark .generative-ai-details-page .workshop-header-icon-wrapper { */
+    /* background-color: #5b21b6; */ /* Example: Tailwind's purple-800 */
+/* } */
+
+/* Add any other styles that are EXCLUSIVELY for the Generative AI page here. */
+

@@ -12,6 +12,9 @@ import About from './Pages/AboutPage'
 import AuthModule from './Pages/AuthModule'
 import BlogPage from './Pages/BlogPage';
 import Blog from './Pages/BlogPage';
+import CyberSecurityWorkshopPage from './Components/WorkshopInfoPages/CyberPage';
+import PowerBiWorkshopPage from './Components/WorkshopInfoPages/PowerBi';
+import GenerativeAiWorkshopPage from './Components/WorkshopInfoPages/GenAi';
 
 const RootLayout = () => {
   return (
@@ -77,6 +80,18 @@ const router = createBrowserRouter([
       {
         path: "authentication",
         element: <AuthModule/>
+      },
+      {
+        path: "/cyber-security-essentials",
+        element: <CyberSecurityWorkshopPage/>
+      },
+            {
+        path: "/power-bi",
+        element: <PowerBiWorkshopPage/>
+      },
+      {
+        path: "/Ai-Modules",
+        element: <GenerativeAiWorkshopPage/>
       }
     ]
   }
