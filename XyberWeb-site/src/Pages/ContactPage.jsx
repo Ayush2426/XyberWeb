@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { Sun, Moon, Laptop, Menu, X, Phone, Mail, MapPin, Send, Instagram, Linkedin, ChevronDown, ChevronUp } from 'lucide-react'; 
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import {ToastContainer, toast } from 'react-toastify';
 // Theme Context
 const ThemeContext = createContext();
 
@@ -181,6 +182,13 @@ const ContactPage = () => {
         { q: "Are the workshops online or offline?", a: "Currently, most of our workshops are conducted offline in Patna, Bihar, to provide a hands-on learning experience. We may offer online sessions in the future." },
         { q: "Is there a fee for attending workshops?", a: "Some workshops may have a nominal fee to cover materials and resources, while others might be free. Please check the specific workshop details for fee information." }
     ];
+    function checkValidationForm(){
+        if (!formData.name || !formData.email || !formData.message) {
+            toast.error('Please fill in all fields of the contact form.');
+        }else{
+            toast.success('Form submitted successfully!');
+        }
+    }
 
     return (
         <PageSection title="Get In Touch" pageClass="contact-page">
@@ -240,7 +248,7 @@ const ContactPage = () => {
                             <p>Thank you for reaching out. We'll get back to you as soon as possible.</p>
                         </div>
                     ) : (
-                        <form onSubmit={handleFormSubmit} className="contact-form">
+                        <form method='post' action="https://script.google.com/macros/s/AKfycbzYJSv_r4Uqv98kLfFzwPxuYSPs-HV2XWlGLu5XTlVwT0ptJAjAQ_uWvX2lYi9KLRD22A/exec" className="contact-form">
                             <div className="form-group">
                                 <label htmlFor="contactName" className="form-label">Your Name</label>
                                 <input type="text" id="contactName" name="name" value={formData.name} onChange={handleFormChange} className="form-input" required />
@@ -253,9 +261,10 @@ const ContactPage = () => {
                                 <label htmlFor="contactMessage" className="form-label">Your Message</label>
                                 <textarea id="contactMessage" name="message" rows="5" value={formData.message} onChange={handleFormChange} className="form-textarea" required></textarea>
                             </div>
-                            <button type="submit" className="submit-button contact-submit-button">
+                            <button onClick={checkValidationForm} type="submit" className="submit-button contact-submit-button">
                                 <Send size={18} style={{ marginRight: '8px' }} /> Send Message
                             </button>
+                            <ToastContainer/>
                         </form>
                     )}
                 </div>
