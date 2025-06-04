@@ -32,7 +32,7 @@ const Navbar = () => {
     { path: "/feedback", label: "Feedback" },
     { path: "/contact", label: "Contact" },
     { path: "/about", label: "About" },
-    { path: "/auth", label: "Register/Login" }
+    { path: "/auth", label: "Register" }
   ];
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);

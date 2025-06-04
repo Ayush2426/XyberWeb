@@ -2,6 +2,8 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { Sun, Moon, Laptop, Menu, X, LogIn, UserPlus, Eye, EyeOff } from 'lucide-react';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 // Theme Context
 const ThemeContext = createContext();
@@ -23,16 +25,15 @@ const applyTheme = (theme) => {
 // Navbar Component
 const Navbar = ({ currentTheme, setTheme, activePage }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    // const navItems = ['Home', 'Workshops', 'Gallery', 'Blog', 'Feedback', 'Contact', 'About', 'Register'];
     const navLinks = [
-        { path: "/home/*", label: "Home" }, // Assuming Home is at the root
+        { path: "/home/*", label: "Home" },
         { path: "/workshops", label: "Workshops" },
         { path: "/gallery", label: "Gallery" },
         { path: "/blog", label: "Blog" },
         { path: "/feedback", label: "Feedback" },
         { path: "/contact", label: "Contact" },
         { path: "/about", label: "About" },
-        { path: "/authentication", label: "Register/Login" } // Combined auth page
+        { path: "/authentication", label: "Register" }
     ];
     const ThemeButton = ({ mode, Icon }) => (
         <button
@@ -44,22 +45,21 @@ const Navbar = ({ currentTheme, setTheme, activePage }) => {
         </button>
     );
 
-        // Effect to handle body scroll when mobile menu is open/closed
-        useEffect(() => {
-            if (isMobileMenuOpen) {
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-            } else {
-                document.body.style.overflow = 'unset'; // Allow scrolling when menu is closed
-            }
-            // Cleanup function to reset overflow if the component unmounts while menu is open
-            return () => {
-                document.body.style.overflow = 'unset';
-            };
-        }, [isMobileMenuOpen]);
-    
-        const handleMobileLinkClick = () => {
-            setIsMobileMenuOpen(false); // Close mobile menu on link click
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
         };
+    }, [isMobileMenuOpen]);
+
+    const handleMobileLinkClick = () => {
+        setIsMobileMenuOpen(false);
+    };
+
 
     return (
         <nav className="navbar">
@@ -77,15 +77,14 @@ const Navbar = ({ currentTheme, setTheme, activePage }) => {
                         >
                             {link.label}
                         </NavLink>
-                    ))} 
+                    ))}
                     <div className="theme-switcher">
                         <ThemeButton mode="light" Icon={Sun} />
                         <ThemeButton mode="dark" Icon={Moon} />
                         <ThemeButton mode="system" Icon={Laptop} />
                     </div>
                 </div>
-                {/* Mobile Menu Button */}
-                <div className="mobile-menu-button-container"> {/* CSS: Hide on desktop, display on mobile */}
+                <div className="mobile-menu-button-container">
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="mobile-menu-button"
@@ -98,13 +97,13 @@ const Navbar = ({ currentTheme, setTheme, activePage }) => {
             </div>
             {isMobileMenuOpen && (
                 <div className="mobile-menu">
-                    <div className="mobile-menu-items"> {/* CSS: Padding, alignment for items */}
+                    <div className="mobile-menu-items">
                         {navLinks.map((link) => (
                             <NavLink
                                 key={link.path}
                                 to={link.path}
                                 className={({ isActive }) => isActive ? "mobile-navbar-link mobile-navbar-link-active" : "mobile-navbar-link"}
-                                onClick={handleMobileLinkClick} // Ensures menu closes on navigation
+                                onClick={handleMobileLinkClick}
                                 end={link.path === "/"}
                             >
                                 {link.label}
@@ -144,9 +143,9 @@ const AboutPage = () => (<PageSection title="About Us" pageClass="about-page"><p
 
 // RegisterPage Component (Login & Register)
 const RegisterPage = () => {
-    const [isLoginView, setIsLoginView] = useState(true);
+    const [isLoginView, setIsLoginView] = useState(true); // This state is still here from original code
 
-    // Login State
+    // Login State (still here from original code)
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [showLoginPassword, setShowLoginPassword] = useState(false);
@@ -154,56 +153,59 @@ const RegisterPage = () => {
     // Register State
     const [registerName, setRegisterName] = useState('');
     const [registerEmail, setRegisterEmail] = useState('');
-    const [registerPassword, setRegisterPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [showRegisterPassword, setShowRegisterPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [passwordMatchError, setPasswordMatchError] = useState(false);
+    const [WorkshopInterested, setWorkshopInterested] = useState(''); // State for the selected workshop
+    const [ContactNumber, setContactNumber] = useState('');
 
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
-        // Basic validation
-        if (!loginEmail || !loginPassword) {
-            alert('Please enter both email and password to login.');
-            return;
-        }
-        console.log('Login attempt:', { email: loginEmail, password: loginPassword });
-        // Add actual login logic here
-        alert(`Login attempt with email: ${loginEmail}. Check console for details.`);
-    };
+    // List of workshop options for the dropdown
+    const workshopOptions = [
+        "Cyber Security Essentials",
+        "Power BI (Data Visualization)",
+        "Generative AI & Agentic AI",
+        "Machine Learning & Robotics",
+        "Python Programming",
+        "Google Dorking (Advanced Search)",
+        "Prompt Engineering",
+        "Web Development",
+        "App Development",
+    ];
 
-    const handleRegisterSubmit = (e) => {
-        e.preventDefault();
-        setPasswordMatchError(false);
-        if (registerPassword !== confirmPassword) {
-            setPasswordMatchError(true);
-            return;
+    // Initialize WorkshopInterested with the first option or an empty string
+    useEffect(() => {
+        if (workshopOptions.length > 0) {
+            setWorkshopInterested(workshopOptions[0]); // Pre-select the first workshop
         }
-        // Basic validation
-        if (!registerName || !registerEmail || !registerPassword) {
-            alert('Please fill in all required fields for registration.');
-            return;
-        }
-        console.log('Register attempt:', { name: registerName, email: registerEmail, password: registerPassword });
-        // Add actual registration logic here
-        alert(`Registration attempt for ${registerName}. Check console for details.`);
-    };
+    }, []); // Empty dependency array means this runs once on mount
 
-    const PasswordToggle = ({ show, setShow }) => (
+
+
+    const PasswordToggle = ({ show, setShow }) => ( // This component is still here
         <button type="button" onClick={() => setShow(!show)} className="password-toggle-button" aria-label={show ? "Hide password" : "Show password"}>
             {show ? <EyeOff size={20} /> : <Eye size={20} />}
         </button>
     );
+    // const notify = () => {
+    //     toast("Thanks for registering with us! We will get back to you soon.")
+    // }
+    function checkValidation(){
+        const name = document.querySelector("#registerName").value;
+        const email = document.querySelector("#registerEmail").value;
+        const contact = document.querySelector("#ContactNumber").value;
+        const workshop = document.querySelector("#WorkshopInterested").value;
+        if (name === "" || email === "" || contact === "" || workshop === "") {
+            toast.error("Please fill all the fields before submitting.");
+            return false;
+        }else{
+            setTimeout(() => {
+                toast.success("Thanks for registering with us! We will get back to you soon.");                
+            }, 1500);
+        }
+    }
+
 
     return (
-        <PageSection title={isLoginView ? "Login to Your Account" : "Create an Account"} pageClass="register-login-page">
+        <PageSection title={"Register yourself to grab a slot !"} pageClass="register-login-page">
             <div className="auth-toggle-buttons">
-                <button
-                    onClick={() => setIsLoginView(true)}
-                    className={`auth-toggle-button ${isLoginView ? 'active' : ''}`}
-                >
-                    <LogIn size={18} className="auth-toggle-icon" /> Login
-                </button>
+                {/* This button is still here from original code, though only register form is shown if isLoginView is false by default */}
                 <button
                     onClick={() => setIsLoginView(false)}
                     className={`auth-toggle-button ${!isLoginView ? 'active' : ''}`}
@@ -212,57 +214,52 @@ const RegisterPage = () => {
                 </button>
             </div>
 
-            {isLoginView ? (
-                // Login Form
-                <form onSubmit={handleLoginSubmit} className="auth-form">
-                    <p className="auth-form-intro">Welcome back! Access your workshop details and history.</p>
-                    <div className="form-group">
-                        <label htmlFor="loginEmail" className="form-label">Email Address</label>
-                        <input type="email" id="loginEmail" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} className="form-input" required />
+            {/* Form for registration - this assumes isLoginView is false for it to show based on original structure */}
+            {/* To make it always show, the conditional rendering for login form would be removed */}
+            {/* For this request, we only modify the input to a select, assuming the form display logic is as user wants */}
+
+            <form method="post" action="https://script.google.com/macros/s/AKfycbxZRVilxS7EMZu6FeSj87Gm7OkxDSTX6x2LYmOqwKdQyXoOXIseIMf0A6ckHs52Tlk_/exec" className="auth-form">
+                <p className="auth-form-intro">New here? Get yourself registered for workshops and to enhance your skill.</p>
+                <div className="form-group">
+                    <label htmlFor="registerName" className="form-label">Full Name</label>
+                    <input name='candidateName' type="text" id="registerName" value={registerName} onChange={(e) => setRegisterName(e.target.value)} className="form-input" required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="registerEmail" className="form-label">Email Address</label>
+                    <input name='candidateMail' type="email" id="registerEmail" value={registerEmail} onChange={(e) => setRegisterEmail(e.target.value)} className="form-input" required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="ContactNumber" className="form-label">Contact Number</label>
+                    {/* The div with class "password-input-container" was likely a copy-paste, kept for structural consistency if styles depend on it */}
+                    <div className="password-input-container">
+                        <input name='candidateContact' type='text' id="ContactNumber" value={ContactNumber} onChange={(e) => setContactNumber(e.target.value)} className="form-input" required />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="loginPassword" className="form-label">Password</label>
-                        <div className="password-input-container">
-                            <input type={showLoginPassword ? "text" : "password"} id="loginPassword" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} className="form-input" required />
-                            <PasswordToggle show={showLoginPassword} setShow={setShowLoginPassword} />
-                        </div>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="WorkshopInterested" className="form-label">Preferred Workshop</label>
+                    {/* The div with class "Workshop-input-container" was likely for consistency, kept as is */}
+                    <div className="Workshop-input-container">
+                        <select
+                            name='preferredWorkshop'
+                            id="WorkshopInterested"
+                            value={WorkshopInterested}
+                            onChange={(e) => setWorkshopInterested(e.target.value)}
+                            className="form-input" // Re-use existing class for styling
+                            required
+                        >
+                            {workshopOptions.map((workshop, index) => (
+                                <option key={index} value={workshop}>
+                                    {workshop}
+                                </option>
+                            ))}
+                        </select>
                     </div>
-                    <button type="submit" className="submit-button auth-submit-button">
-                        <LogIn size={18} style={{ marginRight: '8px' }} /> Login
-                    </button>
-                </form>
-            ) : (
-                // Register Form
-                <form onSubmit={handleRegisterSubmit} className="auth-form">
-                    <p className="auth-form-intro">New here? Create an account to register for workshops and manage your profile.</p>
-                    <div className="form-group">
-                        <label htmlFor="registerName" className="form-label">Full Name</label>
-                        <input type="text" id="registerName" value={registerName} onChange={(e) => setRegisterName(e.target.value)} className="form-input" required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="registerEmail" className="form-label">Email Address</label>
-                        <input type="email" id="registerEmail" value={registerEmail} onChange={(e) => setRegisterEmail(e.target.value)} className="form-input" required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="registerPassword" className="form-label">Password</label>
-                        <div className="password-input-container">
-                            <input type={showRegisterPassword ? "text" : "password"} id="registerPassword" value={registerPassword} onChange={(e) => setRegisterPassword(e.target.value)} className="form-input" required />
-                            <PasswordToggle show={showRegisterPassword} setShow={setShowRegisterPassword} />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                        <div className="password-input-container">
-                            <input type={showConfirmPassword ? "text" : "password"} id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-input" required />
-                            <PasswordToggle show={showConfirmPassword} setShow={setShowConfirmPassword} />
-                        </div>
-                        {passwordMatchError && <p className="form-error-message">Passwords do not match!</p>}
-                    </div>
-                    <button type="submit" className="submit-button auth-submit-button register-button-color">
-                        <UserPlus size={18} style={{ marginRight: '8px' }} /> Register
-                    </button>
-                </form>
-            )}
+                </div>
+                <button onClick={checkValidation} type="submit" className="submit-button auth-submit-button register-button-color">
+                    <UserPlus size={18} style={{ marginRight: '8px' }} /> Register
+                </button>
+                <ToastContainer />
+            </form>
             <div className="auth-info-section">
                 <h3 className="auth-info-title">Workshop Registration Information</h3>
                 <p>Registering an account will allow you to sign up for upcoming workshops, view your registration history, and receive updates. </p>
@@ -280,7 +277,7 @@ export default function AuthModule() {
         const savedTheme = localStorage.getItem('theme');
         return savedTheme || 'system';
     });
-    const [activePage, setActivePage] = useState('Register'); // Set current page
+    const [activePage, setActivePage] = useState('Register');
 
     useEffect(() => {
         applyTheme(theme);
@@ -327,7 +324,7 @@ export default function AuthModule() {
                 </main>
                 <footer className="footer">
                     <p className="footer-text">
-                        © {new Date().getFullYear()} © XyberWeb-Patna@2025. All rights reserved.
+                        &copy; {new Date().getFullYear()} © XyberWeb-Patna@2025. All rights res erved.
                     </p>
                     <p className="footer-subtext">
                         Empowering Bihar's Future Tech Leaders.

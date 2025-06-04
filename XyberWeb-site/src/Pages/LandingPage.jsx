@@ -34,7 +34,7 @@ const Navbar = () => {
         { path: "/feedback", label: "Feedback" },
         { path: "/contact", label: "Contact" },
         { path: "/about", label: "About" },
-        { path: "/authentication", label: "Register/Login" }
+        { path: "/authentication", label: "Register" }
     ];
 
     // ThemeButton sub-component
@@ -148,7 +148,8 @@ export const HomePage = () => (
     <PageSection title="Welcome to Student Tech Workshops - XyberWeb">
         <div className="hero-section"> {/* CSS: Full-width or contained, background, padding */}
             <h2 className="hero-title">Ignite Your Tech Future</h2>
-            <p className="hero-subtitle">Empowering +2 students in Patna with cutting-edge tech skills for a brighter tomorrow.</p>
+            <h1 className="hero-title">• DEFEND • DEVELOP • DOMINATE • </h1>
+            <p className="hero-subtitle">Empowering students in Patna with cutting-edge tech skills for a brighter tomorrow.</p>
             <Link to="/workshops" className="hero-button-link"> {/* Use Link for navigation buttons */}
                 <button className="hero-button">Explore Workshops</button>
             </Link>
@@ -157,7 +158,7 @@ export const HomePage = () => (
         <div className="mission-highlight"> {/* CSS: Styling for mission section */}
             <h3 className="mission-title">Our Mission</h3>
             <p className="mission-text">
-                We are a passionate team dedicated to bridging the technology gap for students in Patna. Our mission is to provide accessible, high-quality tech workshops that equip +2 students with practical skills in emerging fields, fostering innovation and preparing them for future academic and career success.
+                We are a passionate team dedicated to bridging the technology gap for students in Patna. Our mission is to provide accessible, high-quality tech workshops that equip students with practical skills in emerging fields, fostering innovation and preparing them for future academic and career success.
             </p>
         </div>
         <div className="offerings-section"> {/* CSS: Grid or flex layout for cards */}
@@ -199,7 +200,7 @@ const BlogPage = () => (<PageSection title="Blog"><p className="placeholder-text
 const FeedbackPage = () => (<PageSection title="Feedback"><p className="placeholder-text">Feedback form coming soon!</p></PageSection>);
 const ContactPage = () => (<PageSection title="Contact Us"><p className="placeholder-text">Contact information coming soon!</p></PageSection>);
 const AboutPage = () => (<PageSection title="About XyberWeb"><p className="placeholder-text">More about us coming soon!</p></PageSection>);
-const AuthenticationPage = () => (<PageSection title="Register/Login"><p className="placeholder-text">Registration and Login functionality coming soon!</p></PageSection>);
+const AuthenticationPage = () => (<PageSection title="Register"><p className="placeholder-text">Registration and Login functionality coming soon!</p></PageSection>);
 
 // --- Main App Component (formerly LandingPage) ---
 export default function App() { // Renamed to App for clarity, can be LandingPage too

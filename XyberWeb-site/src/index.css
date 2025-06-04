@@ -1295,7 +1295,7 @@ body {
 .about-visual-image:hover { transform: scale(1.03); }
 
 
-/* --- Auth (Register/Login) Page Specific Styles --- */
+/* --- Auth (Register) Page Specific Styles --- */
 .register-login-page .page-section-container { max-width: 600px; /* Narrower for forms */ }
 .register-login-page .page-content-wrapper { padding: 2rem 1.5rem; }
 @media (min-width: 640px) {

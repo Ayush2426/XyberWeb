@@ -30,7 +30,7 @@ const Navbar = ({ currentTheme, setTheme, activePage }) => {
         { path: "/feedback", label: "Feedback" },
         { path: "/contact", label: "Contact" },
         { path: "/about", label: "About" },
-        { path: "/authentication", label: "Register/Login" } // Combined auth page
+        { path: "/authentication", label: "Register" } // Combined auth page
     ];
 
     const ThemeButton = ({ mode, Icon }) => (
@@ -205,7 +205,7 @@ const ContactPage = () => {
                             <Mail size={24} className="contact-detail-icon" />
                             <div>
                                 <strong>Email:</strong>
-                                <p><a href="mailto:info@studenttechpatna.com" className="contact-link">contact@xyberweb.com</a></p>
+                                <p><a href="mailto:info@studenttechpatna.com" className="contact-link">webxyber@gmail.com</a></p>
                             </div>
                         </div>
                         <div className="contact-detail-item">
@@ -220,10 +220,10 @@ const ContactPage = () => {
                     <div className="contact-social-media-section">
                         <h2 className="contact-section-title">Connect With Us</h2>
                         <div className="social-media-links">
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-media-link instagram">
+                            <a href="https://www.instagram.com/xyberweb?igsh=MW9maTZjYWFnNjYxdg==" target="_blank" rel="noopener noreferrer" className="social-media-link instagram">
                                 <Instagram size={28} /> <span>Instagram</span>
                             </a>
-                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-media-link linkedin">
+                            <a href="https://www.linkedin.com/company/xyberweb/" target="_blank" rel="noopener noreferrer" className="social-media-link linkedin">
                                 <Linkedin size={28} /> <span>LinkedIn</span>
                             </a>
                         </div>

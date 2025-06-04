@@ -31,7 +31,7 @@ const Navbar = ({ currentTheme, setTheme, activePage }) => {
         { path: "/feedback", label: "Feedback" },
         { path: "/contact", label: "Contact" },
         { path: "/about", label: "About" },
-        { path: "/authentication", label: "Register/Login" } // Combined auth page
+        { path: "/authentication", label: "Register" } // Combined auth page
     ];
 
 
