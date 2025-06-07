@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LayoutGrid, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import sameerimg from '../Assets/Profiles/sameer.jpg'; 
 
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
@@ -124,12 +126,12 @@ const ImageGallery = ({ images, workshopTitle }) => {
                     <Camera size={28} className="gallery-title-icon" /> Gallery
                 </h3>
                 <div className="gallery-container">
-                    <p style={{textAlign: 'center', padding: '1rem'}}>No images available for this gallery.</p>
+                    <p style={{ textAlign: 'center', padding: '1rem' }}>No images available for this gallery.</p>
                 </div>
             </div>
         );
     }
-    
+
     useEffect(() => {
         if (images && images.length > 0 && (!selectedImage || !images.find(img => img.src === selectedImage.src))) {
             setSelectedImage(images[0]);
@@ -137,20 +139,20 @@ const ImageGallery = ({ images, workshopTitle }) => {
     }, [images, selectedImage]);
 
     if (!selectedImage && images && images.length > 0) {
-      setSelectedImage(images[0]); 
+        setSelectedImage(images[0]);
     }
-    
-    if (!selectedImage) { 
-      return (
-        <div className="gallery-section">
-            <h3 className="gallery-title">
-                <Camera size={28} className="gallery-title-icon" /> Gallery
-            </h3>
-             <div className="gallery-container">
-                <p style={{textAlign: 'center', padding: '1rem'}}>Gallery is loading or no images to display.</p>
+
+    if (!selectedImage) {
+        return (
+            <div className="gallery-section">
+                <h3 className="gallery-title">
+                    <Camera size={28} className="gallery-title-icon" /> Gallery
+                </h3>
+                <div className="gallery-container">
+                    <p style={{ textAlign: 'center', padding: '1rem' }}>Gallery is loading or no images to display.</p>
+                </div>
             </div>
-        </div>
-      );
+        );
     }
 
     return (
@@ -194,7 +196,7 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
     const {
         title,
         Icon,
-        iconColorClass = "icon-color-blue", 
+        iconColorClass = "icon-color-blue",
         intro,
         learningPoints = [],
         keyTakeaways = [],
@@ -205,7 +207,7 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
         galleryImages = [],
         videoUrl,
         trainer,
-        pageClass = "" 
+        pageClass = ""
     } = workshopData;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -281,12 +283,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to="/authentication" ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -330,13 +332,13 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                     </div>
                 )}
 
-                 <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                <div className="final-cta-container">
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -369,7 +371,7 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
 const appDevelopmentWorkshopData = {
     slug: "app-development",
     title: "Introduction to App Development",
-    Icon: LayoutGrid, 
+    Icon: LayoutGrid,
     iconColorClass: "icon-color-slate", // Defined in AppDevelopmentWorkshopStyles.css
     intro: "Dreaming of creating your own mobile app? This introductory workshop gives students a glimpse into the world of app development, covering basic concepts and an overview of popular tools and platforms.",
     learningPoints: [
@@ -387,7 +389,7 @@ const appDevelopmentWorkshopData = {
         "Basic familiarity with tools or concepts for app creation.",
         "Inspiration to pursue further learning in native or cross-platform app development."
     ],
-    audience: "+2 Students (All streams interested in mobile technology and app creation)",
+    audience: "  (All streams interested in mobile technology and app creation)",
     prerequisites: "Basic computer skills. Interest in mobile apps and problem-solving.",
     duration: "3-4 days (e.g., 3 hours per day, total 9-12 hours)",
     format: "Conceptual discussions, tool overviews, design exercises, hands-on session with a beginner-friendly app builder, Q&A.",
@@ -398,14 +400,14 @@ const appDevelopmentWorkshopData = {
         { src: "https://placehold.co/800x600/475569/ffffff?text=App+Store+Concept", alt: "App Store Concept" },
         { src: "https://placehold.co/800x600/e2e8f0/000000?text=Simple+App+Example", alt: "Example of a Simple Mobile App" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    videoUrl: "https://www.youtube.com/embed/lHhRhPV--G0?si=lb93Dbh3JVQ_LKi0",
     trainer: {
-        name: "Mr. Arjun Patel",
+        name: "Mr. Sameer Srivastava",
         title: "Mobile App Developer & Tech Mentor",
-        bio: "Arjun has developed and launched several mobile applications on both iOS and Android platforms. He is passionate about demystifying app development for beginners and guiding them through their first app-building experience.",
-        imageUrl: "https://placehold.co/128x128/94a3b8/000000?text=AP"
+        bio: "Sameer has developed and launched several mobile applications on both iOS and Android platforms. He is passionate about demystifying app development for beginners and guiding them through their first app-building experience.",
+        imageUrl: sameerimg
     },
-    pageClass: "app-development-details-page" 
+    pageClass: "app-development-details-page"
 };
 
 // The component to be rendered

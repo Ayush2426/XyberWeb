@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
+import satyamimg from '../Assets/Profiles/satyam.jpg'; 
 // Import your CSS file here if your setup supports it (e.g., Create React App)
 // import './WorkshopPageStyles.css'; 
 
@@ -15,7 +16,7 @@ const Modal = ({ isOpen, onClose, children }) => {
         <div className={overlayClass}>
             <div className="modal-content">
                 <button
-                    onClick={onClose}
+                    onClick=""
                     className="modal-close-button"
                     aria-label="Close modal"
                 >
@@ -249,12 +250,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:&nbsp;&nbsp;&nbsp;</strong> {format}</p>
                             </div>
                         </div>
-                        <button
+                        <Link to="/authentication" ><button
                             onClick={handleOpenModal}
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -299,12 +300,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                 )}
 
                  <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -355,7 +356,7 @@ const cyberSecurityWorkshopData = {
         "Ability to identify and mitigate common online risks.",
         "Foundational understanding for tech or cybersecurity careers."
     ],
-    audience: "+2 Students (All streams with an interest in technology)",
+    audience: "  (All streams with an interest in technology)",
     prerequisites: "Basic computer literacy and internet usage skills.",
     duration: "2 days (e.g., 3 hours per day, total 6 hours)",
     format: "Interactive sessions, live demos, case studies, Q&A, hands-on activities.",
@@ -366,12 +367,12 @@ const cyberSecurityWorkshopData = {
         { src: "https://placehold.co/800x600/f97316/ffffff?text=Ethical+Hacking+Idea", alt: "Ethical Hacking Idea" },
         { src: "https://placehold.co/800x600/6366f1/ffffff?text=Students+Learning", alt: "Students Learning Cybersecurity" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example YouTube embed URL
+    videoUrl: "https://www.youtube.com/embed/NF5SGj7iGV0?si=fvdYMufZWqhF5Tmm", 
     trainer: {
         name: "Mr. Satyam Srivastava",
         title: "Certified Ethical Hacker & Security Analyst",
         bio: "Satyam is a passionate cybersecurity professional with over 5 years of experience in network security, ethical hacking, and cyber forensics. He is dedicated to educating young minds about the importance of digital safety and empowering them with the skills to navigate the online world securely.",
-        imageUrl: "https://placehold.co/128x128/60a5fa/ffffff?text=AV"
+        imageUrl: satyamimg
     },
     pageClass: "cyber-security-details-page"
 };

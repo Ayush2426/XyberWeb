@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrainCircuit, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
 import "../WorkshopInfoPages/PowerBi.css"
+import {Link } from 'react-router-dom';
+import ayushimg from '../Assets/Profiles/myProfileAyush.jpg';
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
 // import './GenerativeAiWorkshopStyles.css'; 
@@ -281,12 +283,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to='/authentication' ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -331,12 +333,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                 )}
 
                  <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                    <Link to='/authentication' ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -387,7 +389,7 @@ const generativeAiWorkshopData = {
         "Awareness of the ethical implications and capabilities of modern AI.",
         "Inspiration for future projects and learning in AI."
     ],
-    audience: "+2 Students (All streams, curious about cutting-edge AI)",
+    audience: "  (All streams, curious about cutting-edge AI)",
     prerequisites: "Curiosity and a willingness to explore new technologies. Basic internet skills.",
     duration: "2 days (e.g., 3 hours per day, total 6 hours)",
     format: "Interactive discussions, tool demonstrations, hands-on experiments with AI models, ethical debates.",
@@ -398,12 +400,12 @@ const generativeAiWorkshopData = {
         { src: "https://placehold.co/800x600/6d28d9/ffffff?text=Future+of+AI", alt: "Future of AI" },
         { src: "https://placehold.co/800x600/ddd6fe/ffffff?text=Students+Exploring+AI", alt: "Students Exploring AI Tools" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    videoUrl: "https://www.youtube.com/embed/rwF-X5STYks?si=Tdg0s1ZrCZaudzTI", 
     trainer: {
-        name: "Dr. Rohan Mehra",
-        title: "AI Researcher & Ethicist",
-        bio: "Dr. Mehra holds a PhD in Artificial Intelligence and has published extensively on large language models and AI ethics. He is passionate about making complex AI concepts accessible and fostering responsible innovation among the next generation of technologists.",
-        imageUrl: "https://placehold.co/128x128/a78bfa/ffffff?text=RM"
+        name: "Mr. Ayush Verma",
+        title: "AI Trainer & Model Designer",
+        bio: "Ayush holds a PhD in Artificial Intelligence and has published extensively on large language models and AI ethics. He is passionate about making complex AI concepts accessible and fostering responsible innovation among the next generation of technologists.",
+        imageUrl: ayushimg
     },
     pageClass: "generative-ai-details-page" 
 };

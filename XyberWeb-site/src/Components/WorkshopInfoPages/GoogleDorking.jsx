@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SearchCheck, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
+import {Link} from 'react-router-dom';
+import satyamimg from '../Assets/Profiles/satyam.jpg'; 
 
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
@@ -281,12 +283,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to="/authentication" ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -331,12 +333,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                 )}
 
                  <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -387,7 +389,7 @@ const googleDorkingWorkshopData = {
         "Awareness of how much information can be found publicly and the importance of digital privacy.",
         "Ethical framework for using advanced search techniques."
     ],
-    audience: "+2 Students (All streams, anyone who uses Google for research or information)",
+    audience: "  (All streams, anyone who uses Google for research or information)",
     prerequisites: "Basic internet browsing and Google search experience.",
     duration: "1 day (e.g., 3-4 hours)",
     format: "Live demonstrations, practical search exercises, case studies, discussions on ethics.",
@@ -398,12 +400,12 @@ const googleDorkingWorkshopData = {
         { src: "https://placehold.co/800x600/4338ca/ffffff?text=Ethical+Searching", alt: "Ethical Searching Concept" },
         { src: "https://placehold.co/800x600/c7d2fe/000000?text=Students+Researching", alt: "Students Researching Online" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    videoUrl: "https://www.youtube.com/embed/epEPJdxzZXQ?si=ev1iSQUVeHwVKr6T", 
     trainer: {
-        name: "Mr. Vikram Singh",
+        name: "Mr. Satyam Srivastava",
         title: "OSINT Specialist & Digital Investigator",
-        bio: "Vikram is an Open Source Intelligence (OSINT) expert with a background in digital forensics. He specializes in using advanced search techniques for research and investigation and is keen on teaching these powerful skills responsibly.",
-        imageUrl: "https://placehold.co/128x128/818cf8/ffffff?text=VS"
+        bio: "Satyam is an Open Source Intelligence (OSINT) expert with a background in digital forensics. He specializes in using advanced search techniques for research and investigation and is keen on teaching these powerful skills responsibly.",
+        imageUrl: satyamimg
     },
     pageClass: "google-dorking-details-page" 
 };

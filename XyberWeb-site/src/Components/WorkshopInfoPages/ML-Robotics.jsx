@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Bot, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
+import { Bot, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send, Link } from 'lucide-react';
+import satyamimg from '../Assets/Profiles/satyam.jpg'; 
 
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
@@ -281,12 +282,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to="/authentication" ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -331,12 +332,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                 )}
 
                 <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -387,7 +388,7 @@ const mlRoboticsWorkshopData = {
         "Experience with building or simulating a robot and making it perform tasks.",
         "A glimpse into the interdisciplinary field of AI and Robotics."
     ],
-    audience: "+2 Students (Especially those with an interest in science, engineering, and AI)",
+    audience: "  (Especially those with an interest in science, engineering, and AI)",
     prerequisites: "Basic computer skills. Interest in hands-on building and problem-solving.",
     duration: "3-4 days (e.g., 3 hours per day, total 9-12 hours, depends on kit complexity)",
     format: "Hands-on robot building/simulation, programming sessions, mini-projects, demonstrations.",
@@ -398,12 +399,12 @@ const mlRoboticsWorkshopData = {
         { src: "https://placehold.co/800x600/b91c1c/ffffff?text=Autonomous+Robot", alt: "Autonomous Robot" },
         { src: "https://placehold.co/800x600/fecaca/ffffff?text=AI+Chip+on+Robot", alt: "AI Chip on Robot" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/yADlxGz6nGE?si=SiYzci6-4bRLfsFB",
     trainer: {
-        name: "Mr. Sameer Anand",
+        name: "Mr. Satyam Srivastava",
         title: "Robotics Engineer & AI Developer",
-        bio: "Sameer is an experienced robotics engineer with a passion for integrating machine learning into physical systems. He has worked on various autonomous robotics projects and enjoys mentoring students in hands-on tech projects.",
-        imageUrl: "https://placehold.co/128x128/f87171/ffffff?text=SA"
+        bio: "Satyam is an experienced robotics engineer with a passion for integrating machine learning into physical systems. He has worked on various autonomous robotics projects and enjoys mentoring students in hands-on tech projects.",
+        imageUrl: satyamimg
     },
     pageClass: "ml-robotics-details-page"
 };

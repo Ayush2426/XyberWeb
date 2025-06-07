@@ -156,7 +156,7 @@ const AboutPage = () => {
       <div className="about-section about-story">
         <div className="about-section-icon-container"><BookOpen size={40} className="about-section-icon" /></div>
         <h2 className="about-section-title">Our Story</h2>
-        <p>XyberWeb was born from a simple idea: to make cutting-edge technology education accessible and engaging for +2 students in Patna, Bihar...</p>
+        <p>XyberWeb was born from a simple idea: to make cutting-edge technology education accessible and engaging for   in Patna, Bihar...</p>
       </div>
 
       <div className="about-section about-mission-values">

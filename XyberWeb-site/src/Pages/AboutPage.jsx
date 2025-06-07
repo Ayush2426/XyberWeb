@@ -1,6 +1,11 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { Sun, Moon, Laptop, Menu, X, Users, Target, BookOpen, Award, Image as ImageIcon, Linkedin, Briefcase } from 'lucide-react';
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import sameerimg from '../assets/Profiles/sameer.jpg'; 
+import ayushimg from '../assets/Profiles/myProfileAyush.jpg';
+import satyamimg from '../assets/Profiles/satyam.jpg';
+import surajimg from '../assets/Profiles/suraj.jpg';
+import shivamimg from '../assets/Profiles/shivam.jpg';
 // Theme Context
 const ThemeContext = createContext();
 
@@ -144,12 +149,12 @@ const ContactPage = () => (<PageSection title="Contact Us" pageClass="contact-pa
 // AboutPage Component
 const AboutPage = () => {
     const teamMembers = [
-        { name: "Satyam Srivastava", role: "Founder & Lead Instructor", bio: "Priya is a passionate software engineer with 5+ years of experience in web development and AI. She founded TechWorkshops Patna to bridge the tech skills gap for students in her hometown.", image: "https://placehold.co/400x400/DBEAFE/1E40AF?text=Satyam", linkedin: "#" },
-        { name: "Ayush Verma", role: "Full Stack Developer & AI Instructor", bio: "Rajesh brings his expertise in hardware programming and robotics to inspire young innovators. He believes in learning by doing and making tech fun.", image: "https://placehold.co/400x400/D1FAE5/065F46?text=Ayush", linkedin: "#" },
-        { name: "Suraj Kumar", role: "Curriculum Developer & Mentor", bio: "Anjali has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: "https://placehold.co/400x400/FCE7F3/831843?text=Suraj", linkedin: "#" },
-        { name: "Sameer Srivastava", role: "Curriculum Developer & Mentor", bio: "Anjali has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: "https://placehold.co/400x400/FCE7F3/831843?text=Sameer", linkedin: "#" },
-        { name: "Smriti Richa", role: "Curriculum Developer & Mentor", bio: "Anjali has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: "https://placehold.co/400x400/FCE7F3/831843?text=Richa", linkedin: "#" },
-        { name: "Shivam Srivastava", role: "Curriculum Developer & Mentor", bio: "Anjali has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: "https://placehold.co/400x400/FCE7F3/831843?text=Shivam", linkedin: "#" },
+        { name: "Satyam Srivastava", role: "Founder & Lead Instructor", bio: "Satyam is a passionate software engineer with 5+ years of experience in web development and AI. She founded TechWorkshops Patna to bridge the tech skills gap for students in her hometown.", image: satyamimg, linkedin: "https://www.linkedin.com/in/satyam-srivastava2309" },
+        { name: "Ayush Verma", role: "Full Stack Developer & AI Instructor", bio: "Ayush brings his expertise in hardware programming and robotics to inspire young innovators. He believes in learning by doing and making tech fun.", image: ayushimg, linkedin: "https://www.linkedin.com/in/ayush-verma-a076a7360/" },
+        { name: "Suraj Kumar", role: "Curriculum Developer & Mentor", bio: "Suraj has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: surajimg, linkedin: "https://www.linkedin.com/in/-suraj-kumar-" },
+        { name: "Sameer Srivastava", role: "Curriculum Developer & Mentor", bio: "Sameer has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: sameerimg, linkedin: "https://www.linkedin.com/in/sameer-srivastava-115820301" },
+        { name: "Smriti Richa", role: "Curriculum Developer & Mentor", bio: "Richa has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: "https://placehold.co/400x400/FCE7F3/831843?text=Richa", linkedin: "https://www.linkedin.com/in/richa-kumari2005" },
+        { name: "Shivam Srivastava", role: "Curriculum Developer & Mentor", bio: "Shivam has a background in computer science education and focuses on creating engaging and effective learning materials for all our workshops.", image: shivamimg, linkedin: "https://www.linkedin.com/in/shivam-092220261" },
     ];
 
     const milestones = [
@@ -164,7 +169,7 @@ const AboutPage = () => {
             <div className="about-section about-story">
                 <div className="about-section-icon-container"><BookOpen size={40} className="about-section-icon" /></div>
                 <h2 className="about-section-title">Our Story</h2>
-                <p>TechWorkshops Patna was born from a simple idea: to make cutting-edge technology education accessible and engaging for +2 students in Patna, Bihar. We noticed a gap between traditional academic learning and the practical skills demanded by the rapidly evolving tech industry. Our founders, a group of passionate tech professionals and educators with roots in Patna, decided to create a platform that not only teaches coding and robotics but also fosters a mindset of innovation, problem-solving, and lifelong learning. We started with small, focused workshops and have grown into a vibrant community dedicated to igniting the tech future of our youth.</p>
+                <p>TechWorkshops Patna was born from a simple idea: to make cutting-edge technology education accessible and engaging for   in Patna, Bihar. We noticed a gap between traditional academic learning and the practical skills demanded by the rapidly evolving tech industry. Our founders, a group of passionate tech professionals and educators with roots in Patna, decided to create a platform that not only teaches coding and robotics but also fosters a mindset of innovation, problem-solving, and lifelong learning. We started with small, focused workshops and have grown into a vibrant community dedicated to igniting the tech future of our youth.</p>
             </div>
 
             <div className="about-section about-mission-values">

@@ -142,7 +142,7 @@ const HomePage = () => (
     <PageSection title="Welcome to Student Tech Workshops (Patna, Bihar)" pageClass="home-page">
         <div className="hero-section">
             <h2 className="hero-title">Ignite Your Tech Future</h2>
-            <p className="hero-subtitle">Empowering +2 students in Patna with cutting-edge tech skills for a brighter tomorrow.</p>
+            <p className="hero-subtitle">Empowering   in Patna with cutting-edge tech skills for a brighter tomorrow.</p>
             <button className="hero-button">
                 Explore Workshops
             </button>
@@ -150,7 +150,7 @@ const HomePage = () => (
         <div className="mission-highlight">
             <h3 className="mission-title">Our Mission</h3>
             <p className="mission-text">
-                We are a passionate team dedicated to bridging the technology gap for students in Patna. Our mission is to provide accessible, high-quality tech workshops that equip +2 students with practical skills in emerging fields, fostering innovation and preparing them for future academic and career success.
+                We are a passionate team dedicated to bridging the technology gap for students in Patna. Our mission is to provide accessible, high-quality tech workshops that equip   with practical skills in emerging fields, fostering innovation and preparing them for future academic and career success.
             </p>
         </div>
         <div className="offerings-section">
@@ -236,7 +236,7 @@ const GalleryPage = () => {
                         <div key={`vid-${index}`} className="gallery-item gallery-item-video">
                             {/* Basic placeholder for video. For actual embedding, you'd use an iframe or a video player library. */}
                             <a
-                                href={`https://www.youtube.com/watch?v=${item.videoId}`}
+                                href={``}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="gallery-video-link"

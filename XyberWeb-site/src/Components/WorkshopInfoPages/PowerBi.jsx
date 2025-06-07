@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart3, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
 import "../WorkshopInfoPages/PowerBi.css"
+import {Link} from 'react-router-dom';
+import satyamimg from '../Assets/Profiles/satyam.jpg'; 
 
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
@@ -283,12 +285,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to="/authentication" ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -333,12 +335,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                 )}
 
                  <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -390,7 +392,7 @@ const powerBiWorkshopData = {
         "Understanding of data preparation and modeling essentials.",
         "A valuable skill for students heading towards any field involving data."
     ],
-    audience: "+2 Students (Especially those interested in commerce, science, analytics, or business)",
+    audience: "  (Especially those interested in commerce, science, analytics, or business)",
     prerequisites: "Basic computer skills. Familiarity with Microsoft Excel is helpful but not mandatory.",
     duration: "3 days (e.g., 2.5 hours per day, total 7.5 hours)",
     format: "Hands-on labs, guided projects, interactive tutorials, data challenges.",
@@ -401,12 +403,12 @@ const powerBiWorkshopData = {
         { src: "https://placehold.co/800x600/6ee7b7/ffffff?text=Data+Analysis+Screen", alt: "Data Analysis in Progress" },
         { src: "https://placehold.co/800x600/a7f3d0/ffffff?text=Students+Using+Power+BI", alt: "Students working with Power BI" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    videoUrl: "https://www.youtube.com/embed/yKTSLffVGbk?si=8g5NTFjdVGIfyRlC", 
     trainer: {
-        name: "Ms. Priya Sharma",
+        name: "Ms. Satyam Srivastava",
         title: "Data Analyst & Power BI Specialist",
-        bio: "Priya is a seasoned data analyst with a knack for making complex data understandable and actionable. With 5+ years of experience using Power BI for business intelligence, she enjoys teaching students how to tell compelling stories with data.",
-        imageUrl: "https://placehold.co/128x128/34d399/ffffff?text=PS"
+        bio: "Satyam is a seasoned data analyst with a knack for making complex data understandable and actionable. With 5+ years of experience using Power BI for business intelligence, she enjoys teaching students how to tell compelling stories with data.",
+        imageUrl: satyamimg
     },
     pageClass: "power-bi-details-page" 
 };

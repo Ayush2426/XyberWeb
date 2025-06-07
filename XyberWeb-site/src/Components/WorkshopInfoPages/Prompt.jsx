@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MessageSquareQuote, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
+import {Link} from 'react-router-dom';
+import satyamimg from '../Assets/Profiles/satyam.jpg'; 
 
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
@@ -281,12 +283,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to="/authentication" ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -331,12 +333,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                 )}
 
                  <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -387,7 +389,7 @@ const promptEngineeringWorkshopData = {
         "A deeper understanding of how to interact with and guide AI behavior.",
         "Skills applicable across many AI-powered applications and future technologies."
     ],
-    audience: "+2 Students (All streams, especially those using or interested in AI tools for creativity, productivity, or research)",
+    audience: "  (All streams, especially those using or interested in AI tools for creativity, productivity, or research)",
     prerequisites: "Basic computer and internet skills. Some exposure to AI tools like ChatGPT is helpful but not required.",
     duration: "1-2 days (e.g., 3 hours per day)",
     format: "Interactive sessions, hands-on prompt writing exercises, live AI tool usage, peer feedback, and case studies.",
@@ -398,12 +400,12 @@ const promptEngineeringWorkshopData = {
         { src: "https://placehold.co/800x600/db2777/ffffff?text=Art+of+Prompting", alt: "The Art of Prompting Concept" },
         { src: "https://placehold.co/800x600/fbcfe8/000000?text=AI+Chat+Bubbles", alt: "AI Chat Bubbles" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    videoUrl: "https://www.youtube.com/embed/Bq-ncjOGeVU?si=4vXPOKpF9X2Q2DaT", 
     trainer: {
-        name: "Ms. Aisha Khan",
+        name: "Mr. Satyam Srivastava & Mr. Ayush Verma",
         title: "AI Interaction Designer & Prompt Specialist",
-        bio: "Aisha is an expert in human-AI interaction and has spent years refining the art of prompt engineering. She helps individuals and teams unlock the full potential of generative AI tools through effective communication strategies.",
-        imageUrl: "https://placehold.co/128x128/f472b6/ffffff?text=AK"
+        bio: "Satyam & Ayush is an expert in human-AI interaction and has spent years refining the art of prompt engineering. She helps individuals and teams unlock the full potential of generative AI tools through effective communication strategies.",
+        imageUrl: satyamimg
     },
     pageClass: "prompt-engineering-details-page" 
 };

@@ -176,7 +176,7 @@ const ContactPage = () => {
     };
 
     const faqs = [
-        { q: "What kind of workshops do you offer?", a: "We offer a variety of tech workshops for +2 students, including Python Programming, Web Development, Cybersecurity Essentials, Data Visualization with Power BI, Robotics, and AI concepts." },
+        { q: "What kind of workshops do you offer?", a: "We offer a variety of tech workshops for  , including Python Programming, Web Development, Cybersecurity Essentials, Data Visualization with Power BI, Robotics, and AI concepts." },
         { q: "Who can attend these workshops?", a: "Our workshops are primarily designed for students in classes 11 and 12 (+2 level). Some workshops may have specific prerequisites, which will be mentioned in the workshop details." },
         { q: "How can I register for a workshop?", a: "You can register for upcoming workshops through the 'Register' link in our navigation bar. Details for each workshop, including registration links, will be available on the 'Workshops' page." },
         { q: "Are the workshops online or offline?", a: "Currently, most of our workshops are conducted offline in Patna, Bihar, to provide a hands-on learning experience. We may offer online sessions in the future." },

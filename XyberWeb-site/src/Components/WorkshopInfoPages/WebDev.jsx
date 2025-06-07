@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CodeXml, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import ayushimg from '../Assets/Profiles/myProfileAyush.jpg'
 
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
@@ -124,12 +126,12 @@ const ImageGallery = ({ images, workshopTitle }) => {
                     <Camera size={28} className="gallery-title-icon" /> Gallery
                 </h3>
                 <div className="gallery-container">
-                    <p style={{textAlign: 'center', padding: '1rem'}}>No images available for this gallery.</p>
+                    <p style={{ textAlign: 'center', padding: '1rem' }}>No images available for this gallery.</p>
                 </div>
             </div>
         );
     }
-    
+
     useEffect(() => {
         if (images && images.length > 0 && (!selectedImage || !images.find(img => img.src === selectedImage.src))) {
             setSelectedImage(images[0]);
@@ -137,20 +139,20 @@ const ImageGallery = ({ images, workshopTitle }) => {
     }, [images, selectedImage]);
 
     if (!selectedImage && images && images.length > 0) {
-      setSelectedImage(images[0]); 
+        setSelectedImage(images[0]);
     }
-    
-    if (!selectedImage) { 
-      return (
-        <div className="gallery-section">
-            <h3 className="gallery-title">
-                <Camera size={28} className="gallery-title-icon" /> Gallery
-            </h3>
-             <div className="gallery-container">
-                <p style={{textAlign: 'center', padding: '1rem'}}>Gallery is loading or no images to display.</p>
+
+    if (!selectedImage) {
+        return (
+            <div className="gallery-section">
+                <h3 className="gallery-title">
+                    <Camera size={28} className="gallery-title-icon" /> Gallery
+                </h3>
+                <div className="gallery-container">
+                    <p style={{ textAlign: 'center', padding: '1rem' }}>Gallery is loading or no images to display.</p>
+                </div>
             </div>
-        </div>
-      );
+        );
     }
 
     return (
@@ -194,7 +196,7 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
     const {
         title,
         Icon,
-        iconColorClass = "icon-color-blue", 
+        iconColorClass = "icon-color-blue",
         intro,
         learningPoints = [],
         keyTakeaways = [],
@@ -205,7 +207,7 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
         galleryImages = [],
         videoUrl,
         trainer,
-        pageClass = "" 
+        pageClass = ""
     } = workshopData;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -281,12 +283,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to="/authentication" ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -330,13 +332,13 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                     </div>
                 )}
 
-                 <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                <div className="final-cta-container">
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -369,7 +371,7 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
 const webDevelopmentWorkshopData = {
     slug: "web-development",
     title: "Web Development Fundamentals",
-    Icon: CodeXml, 
+    Icon: CodeXml,
     iconColorClass: "icon-color-brown", // Defined in WebDevelopmentWorkshopStyles.css
     intro: "Build your first website from the ground up! This workshop introduces students to the core technologies of web development: HTML, CSS, and a touch of JavaScript.",
     learningPoints: [
@@ -388,7 +390,7 @@ const webDevelopmentWorkshopData = {
         "Skills to add simple interactivity and dynamic content updates with JavaScript.",
         "A solid starting point for further exploration in front-end or full-stack development."
     ],
-    audience: "+2 Students (All streams interested in creating websites or learning to code)",
+    audience: "  (All streams interested in creating websites or learning to code)",
     prerequisites: "Basic computer literacy and file management skills.",
     duration: "4-5 days (e.g., 2.5 hours per day, total 10-12.5 hours)",
     format: "Hands-on coding exercises, live coding by instructor, building a small portfolio project (e.g., a personal profile page), debugging sessions.",
@@ -399,14 +401,14 @@ const webDevelopmentWorkshopData = {
         { src: "https://placehold.co/800x600/854d0e/ffffff?text=Responsive+Web+Design", alt: "Responsive Web Design Showcase" },
         { src: "https://placehold.co/800x600/713f12/ffffff?text=Students+Building+Websites", alt: "Students Building Websites" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    videoUrl: "https://www.youtube.com/embed/v0fh9YvF84s?si=aY5iOuh0YUnmZIJf",
     trainer: {
-        name: "Ms. Divya Reddy",
+        name: "Mr. Ayush Verma",
         title: "Front-End Developer & UI/UX Enthusiast",
-        bio: "Divya is a passionate front-end developer with extensive experience in building responsive and user-friendly websites. She loves teaching the foundational blocks of web development and inspiring students to create their own presence on the internet.",
-        imageUrl: "https://placehold.co/128x128/f59e0b/000000?text=DR"
+        bio: "Ayush is a passionate front-end developer with extensive experience in building responsive and user-friendly websites. She loves teaching the foundational blocks of web development and inspiring students to create their own presence on the internet.",
+        imageUrl: ayushimg
     },
-    pageClass: "web-development-details-page" 
+    pageClass: "web-development-details-page"
 };
 
 // The component to be rendered

@@ -44,22 +44,22 @@ const Navbar = ({ currentTheme, setTheme }) => {
     );
 
 
-            // Effect to handle body scroll when mobile menu is open/closed
-            useEffect(() => {
-                if (isMobileMenuOpen) {
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-                } else {
-                    document.body.style.overflow = 'unset'; // Allow scrolling when menu is closed
-                }
-                // Cleanup function to reset overflow if the component unmounts while menu is open
-                return () => {
-                    document.body.style.overflow = 'unset';
-                };
-            }, [isMobileMenuOpen]);
-        
-            const handleMobileLinkClick = () => {
-                setIsMobileMenuOpen(false); // Close mobile menu on link click
-            };
+    // Effect to handle body scroll when mobile menu is open/closed
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        } else {
+            document.body.style.overflow = 'unset'; // Allow scrolling when menu is closed
+        }
+        // Cleanup function to reset overflow if the component unmounts while menu is open
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
+
+    const handleMobileLinkClick = () => {
+        setIsMobileMenuOpen(false); // Close mobile menu on link click
+    };
 
     return (
         <nav className="navbar">
@@ -77,7 +77,7 @@ const Navbar = ({ currentTheme, setTheme }) => {
                         >
                             {link.label}
                         </NavLink>
-                    ))} 
+                    ))}
                     <div className="theme-switcher">
                         <ThemeButton mode="light" Icon={Sun} />
                         <ThemeButton mode="dark" Icon={Moon} />
@@ -140,7 +140,7 @@ const HomePage = () => (
         {/* Hero Section */}
         <div className="hero-section">
             <h2 className="hero-title">Ignite Your Tech Future</h2>
-            <p className="hero-subtitle">Empowering +2 students in Patna with cutting-edge tech skills for a brighter tomorrow.</p>
+            <p className="hero-subtitle">Empowering   in Patna with cutting-edge tech skills for a brighter tomorrow.</p>
             <button className="hero-button">
                 Explore Workshops
             </button>
@@ -150,7 +150,7 @@ const HomePage = () => (
         <div className="mission-highlight">
             <h3 className="mission-title">Our Mission</h3>
             <p className="mission-text">
-                We are a passionate team dedicated to bridging the technology gap for students in Patna. Our mission is to provide accessible, high-quality tech workshops that equip +2 students with practical skills in emerging fields, fostering innovation and preparing them for future academic and career success.
+                We are a passionate team dedicated to bridging the technology gap for students in Patna. Our mission is to provide accessible, high-quality tech workshops that equip   with practical skills in emerging fields, fostering innovation and preparing them for future academic and career success.
             </p>
         </div>
 
@@ -246,24 +246,24 @@ const WorkshopsPage = () => {
             slug: "web-dev",
             icon: <CodeXml size={40} className="workshop-card-icon" />,
             title: "Web Development",
-            description: "Master the art of writing effective prompts to get better responses from AI tools.",
+            description: "Crafting responsive and interactive websites for seamless user experiences across browsers.",
             colorClass: "workshop-card-brown"
         },
         {
             slug: "app-dev",
             icon: <LayoutGrid size={40} className="workshop-card-icon" />,
             title: "App Development",
-            description: "Master the art of writing effective prompts to get better responses from AI tools.",
+            description: "Building efficient and user-friendly mobile applications for Android and iOS platforms.",
             colorClass: "workshop-card-white"
         }
-        
+
     ];
 
     return (
         <PageSection title="Our Workshops" pageClass="workshops-page">
             <br />
             <p className="workshops-intro">
-                Dive into the world of technology with our hands-on workshops designed for +2 students.
+                Dive into the world of technology with our hands-on workshops designed for  .
                 Explore diverse fields, gain practical skills, and ignite your passion for innovation.
             </p>
             <div className="workshops-grid">

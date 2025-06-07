@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Code, BookOpen, CheckCircle, Users, CalendarDays, Clock, Info, Camera, Video, UserCircle, X, Mail, User, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import surajimg from '../Assets/Profiles/suraj.jpg'
 
 // Import the specific CSS for this page.
 // Ensure BaseWorkshopStyles.css is also linked/imported in your project.
@@ -281,12 +283,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                                 <p className="meta-item"><Info size={18} className="meta-item-icon" /> <strong>Format:</strong> {format}</p>
                             </div>
                         </div>
-                        <button
-                            onClick={handleOpenModal}
+                        <Link to="/authentication" ><button
+                            onClick=""
                             className="primary-action-button"
                         >
                             Pre-Register for this Workshop
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
 
@@ -331,12 +333,12 @@ const WorkshopInfoPageLayout = ({ workshopData }) => {
                 )}
 
                  <div className="final-cta-container">
-                    <button
-                        onClick={handleOpenModal}
+                    <Link to="/authentication" ><button
+                        onClick=""
                         className="final-cta-button"
                     >
                         Secure Your Spot - Pre-Register Now!
-                    </button>
+                    </button></Link>
                 </div>
             </div>
 
@@ -387,7 +389,7 @@ const pythonProgrammingWorkshopData = {
         "Confidence to explore more advanced Python topics and libraries.",
         "A strong foundation for any future programming endeavors."
     ],
-    audience: "+2 Students (All streams, no prior programming experience required)",
+    audience: "  (All streams, no prior programming experience required)",
     prerequisites: "Basic computer literacy.",
     duration: "4-5 days (e.g., 2 hours per day, total 8-10 hours)",
     format: "Interactive coding sessions, practical exercises, mini-projects, pair programming (optional).",
@@ -398,12 +400,12 @@ const pythonProgrammingWorkshopData = {
         { src: "https://placehold.co/800x600/ca8a04/ffffff?text=Python+Logo", alt: "Python Logo" },
         { src: "https://placehold.co/800x600/fef9c3/000000?text=Simple+Python+Game", alt: "Simple Python Game Interface" },
     ],
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    videoUrl: "https://www.youtube.com/embed/QoIRX37VZpo?si=ZdjAdPpKaUd3dFsZ", 
     trainer: {
-        name: "Ms. Anjali Kumari",
+        name: "Mr. Suraj Kumar",
         title: "Software Developer & Python Educator",
-        bio: "Anjali is a software developer with a strong background in Python development for web applications and data analysis. She is enthusiastic about teaching programming to beginners and making coding accessible and fun.",
-        imageUrl: "https://placehold.co/128x128/facc15/000000?text=AK"
+        bio: "Suraj is a software developer with a strong background in Python development for web applications and data analysis. She is enthusiastic about teaching programming to beginners and making coding accessible and fun.",
+        imageUrl: surajimg
     },
     pageClass: "python-programming-details-page" 
 };
