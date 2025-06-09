@@ -404,7 +404,7 @@ const pythonProgrammingWorkshopData = {
     trainer: {
         name: "Mr. Suraj Kumar",
         title: "Software Developer & Python Educator",
-        bio: "Suraj is a software developer with a strong background in Python development for web applications and data analysis. She is enthusiastic about teaching programming to beginners and making coding accessible and fun.",
+        bio: "Suraj is a software developer with a strong background in Python development for web applications and data analysis. He is enthusiastic about teaching programming to beginners and making coding accessible and fun.",
         imageUrl: surajimg
     },
     pageClass: "python-programming-details-page" 

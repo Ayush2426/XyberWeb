@@ -405,9 +405,9 @@ const powerBiWorkshopData = {
     ],
     videoUrl: "https://www.youtube.com/embed/yKTSLffVGbk?si=8g5NTFjdVGIfyRlC", 
     trainer: {
-        name: "Ms. Satyam Srivastava",
+        name: "Ms. Smriti Richa & Mr. Satyam Srivastava",
         title: "Data Analyst & Power BI Specialist",
-        bio: "Satyam is a seasoned data analyst with a knack for making complex data understandable and actionable. With 5+ years of experience using Power BI for business intelligence, she enjoys teaching students how to tell compelling stories with data.",
+        bio: "Satyam & Richa are a seasoned data analyst with a knack for making complex data understandable and actionable. With 5+ years of experience using Power BI for business intelligence, they enjoys teaching students how to tell compelling stories with data.",
         imageUrl: satyamimg
     },
     pageClass: "power-bi-details-page" 

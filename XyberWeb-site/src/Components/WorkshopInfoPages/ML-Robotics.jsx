@@ -401,9 +401,9 @@ const mlRoboticsWorkshopData = {
     ],
     videoUrl: "https://www.youtube.com/embed/yADlxGz6nGE?si=SiYzci6-4bRLfsFB",
     trainer: {
-        name: "Mr. Satyam Srivastava",
+        name: "Mr. Adarsh Sarthak | Mr. Aman Mishra | Mr. Aditya Kumar",
         title: "Robotics Engineer & AI Developer",
-        bio: "Satyam is an experienced robotics engineer with a passion for integrating machine learning into physical systems. He has worked on various autonomous robotics projects and enjoys mentoring students in hands-on tech projects.",
+        bio: "Mr. Adarsh, Mr. Aman & Mr. Aditya are experienced robotics engineer with a passion for integrating machine learning into physical systems. They has worked on various autonomous robotics projects and enjoys mentoring students in hands-on tech projects.",
         imageUrl: satyamimg
     },
     pageClass: "ml-robotics-details-page"

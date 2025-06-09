@@ -404,7 +404,7 @@ const promptEngineeringWorkshopData = {
     trainer: {
         name: "Mr. Satyam Srivastava & Mr. Ayush Verma",
         title: "AI Interaction Designer & Prompt Specialist",
-        bio: "Satyam & Ayush is an expert in human-AI interaction and has spent years refining the art of prompt engineering. She helps individuals and teams unlock the full potential of generative AI tools through effective communication strategies.",
+        bio: "Satyam & Ayush is an expert in human-AI interaction and has spent years refining the art of prompt engineering. They helps individuals and teams unlock the full potential of generative AI tools through effective communication strategies.",
         imageUrl: satyamimg
     },
     pageClass: "prompt-engineering-details-page" 

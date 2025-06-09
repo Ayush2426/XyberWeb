@@ -405,7 +405,7 @@ const webDevelopmentWorkshopData = {
     trainer: {
         name: "Mr. Ayush Verma",
         title: "Front-End Developer & UI/UX Enthusiast",
-        bio: "Ayush is a passionate front-end developer with extensive experience in building responsive and user-friendly websites. She loves teaching the foundational blocks of web development and inspiring students to create their own presence on the internet.",
+        bio: "Ayush is a passionate front-end developer with extensive experience in building responsive and user-friendly websites. He loves teaching the foundational blocks of web development and inspiring students to create their own presence on the internet.",
         imageUrl: ayushimg
     },
     pageClass: "web-development-details-page"
