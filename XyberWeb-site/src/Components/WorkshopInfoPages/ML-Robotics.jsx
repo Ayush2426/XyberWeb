@@ -404,7 +404,7 @@ const mlRoboticsWorkshopData = {
         name: "Mr. Adarsh Sarthak | Mr. Aman Mishra | Mr. Aditya Kumar",
         title: "Robotics Engineer & AI Developer",
         bio: "Mr. Adarsh, Mr. Aman & Mr. Aditya are experienced robotics engineer with a passion for integrating machine learning into physical systems. They has worked on various autonomous robotics projects and enjoys mentoring students in hands-on tech projects.",
-        imageUrl: satyamimg
+        imageUrl: "https://placehold.co/128x128/94a3b8/ffffff?text=Trainer+Image",
     },
     pageClass: "ml-robotics-details-page"
 };
