@@ -143,20 +143,13 @@ const AboutPage = () => (<PageSection title="About Us" pageClass="about-page"><p
 
 // RegisterPage Component (Login & Register)
 const RegisterPage = () => {
-    const [isLoginView, setIsLoginView] = useState(true); // This state is still here from original code
-
-    // Login State (still here from original code)
-    const [loginEmail, setLoginEmail] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
-    const [showLoginPassword, setShowLoginPassword] = useState(false);
-
-    // Register State
+    const [isLoginView, setIsLoginView] = useState(true);
     const [registerName, setRegisterName] = useState('');
     const [registerEmail, setRegisterEmail] = useState('');
-    const [WorkshopInterested, setWorkshopInterested] = useState(''); // State for the selected workshop
+    const [WorkshopInterested, setWorkshopInterested] = useState('');
     const [ContactNumber, setContactNumber] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // List of workshop options for the dropdown
     const workshopOptions = [
         "Cyber Security Essentials",
         "Power BI (Data Visualization)",
@@ -169,43 +162,46 @@ const RegisterPage = () => {
         "App Development",
     ];
 
-    // Initialize WorkshopInterested with the first option or an empty string
     useEffect(() => {
         if (workshopOptions.length > 0) {
-            setWorkshopInterested(workshopOptions[0]); // Pre-select the first workshop
+            setWorkshopInterested(workshopOptions[0]);
         }
-    }, []); // Empty dependency array means this runs once on mount
+    }, []);
 
-
-
-    const PasswordToggle = ({ show, setShow }) => ( // This component is still here
-        <button type="button" onClick={() => setShow(!show)} className="password-toggle-button" aria-label={show ? "Hide password" : "Show password"}>
-            {show ? <EyeOff size={20} /> : <Eye size={20} />}
-        </button>
-    );
-    // const notify = () => {
-    //     toast("Thanks for registering with us! We will get back to you soon.")
-    // }
-    function checkValidation(){
-        const name = document.querySelector("#registerName").value;
-        const email = document.querySelector("#registerEmail").value;
-        const contact = document.querySelector("#ContactNumber").value;
-        const workshop = document.querySelector("#WorkshopInterested").value;
-        if (name === "" || email === "" || contact === "" || workshop === "") {
+    const handleRegisterSubmit = (e) => {
+        // Validate fields before allowing submission
+        if (!registerName || !registerEmail || !ContactNumber || !WorkshopInterested) {
+            e.preventDefault(); // Stop the form from submitting if fields are empty
             toast.error("Please fill all the fields before submitting.");
-            return false;
-        }else{
-            setTimeout(() => {
-                toast.success("Thanks for registering with us! We will get back to you soon.");                
-            }, 1500);
+            return;
         }
-    }
+        // If validation passes, show success toast and set submitting state
+        toast.success("Thanks for registering with us! We will get back to you soon.");
+        setIsSubmitting(true);
+    };
 
+    const handleIframeLoad = () => {
+        // This function is called when the iframe finishes loading the response from Google.
+        if (isSubmitting) {
+            // Wait for 2 seconds after submission completes before clearing the form
+            // and re-enabling the button. This gives the user feedback.
+            setTimeout(() => {
+                // Clear the form fields
+                setRegisterName('');
+                setRegisterEmail('');
+                setContactNumber('');
+                if (workshopOptions.length > 0) {
+                    setWorkshopInterested(workshopOptions[0]);
+                }
+                // Reset the submission flag to re-enable the button
+                setIsSubmitting(false);
+            }, 2000); // 2-second delay
+        }
+    };
 
     return (
         <PageSection title={"Register yourself to grab a slot !"} pageClass="register-login-page">
             <div className="auth-toggle-buttons">
-                {/* This button is still here from original code, though only register form is shown if isLoginView is false by default */}
                 <button
                     onClick={() => setIsLoginView(false)}
                     className={`auth-toggle-button ${!isLoginView ? 'active' : ''}`}
@@ -214,11 +210,14 @@ const RegisterPage = () => {
                 </button>
             </div>
 
-            {/* Form for registration - this assumes isLoginView is false for it to show based on original structure */}
-            {/* To make it always show, the conditional rendering for login form would be removed */}
-            {/* For this request, we only modify the input to a select, assuming the form display logic is as user wants */}
-
-            <form method="post" action="https://script.google.com/macros/s/AKfycbxZRVilxS7EMZu6FeSj87Gm7OkxDSTX6x2LYmOqwKdQyXoOXIseIMf0A6ckHs52Tlk_/exec" className="auth-form">
+            {/* The form now submits to a hidden iframe to prevent page reload */}
+            <form
+                method="post"
+                action="https://script.google.com/macros/s/AKfycbxZRVilxS7EMZu6FeSj87Gm7OkxDSTX6x2LYmOqwKdQyXoOXIseIMf0A6ckHs52Tlk_/exec"
+                className="auth-form"
+                target="hidden_iframe"
+                onSubmit={handleRegisterSubmit}
+            >
                 <p className="auth-form-intro">New here? Get yourself registered for workshops and to enhance your skill.</p>
                 <div className="form-group">
                     <label htmlFor="registerName" className="form-label">Full Name</label>
@@ -230,21 +229,19 @@ const RegisterPage = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="ContactNumber" className="form-label">Contact Number</label>
-                    {/* The div with class "password-input-container" was likely a copy-paste, kept for structural consistency if styles depend on it */}
                     <div className="password-input-container">
                         <input name='candidateContact' type='text' id="ContactNumber" value={ContactNumber} onChange={(e) => setContactNumber(e.target.value)} className="form-input" required />
                     </div>
                 </div>
                 <div className="form-group">
                     <label htmlFor="WorkshopInterested" className="form-label">Preferred Workshop</label>
-                    {/* The div with class "Workshop-input-container" was likely for consistency, kept as is */}
                     <div className="Workshop-input-container">
                         <select
                             name='preferredWorkshop'
                             id="WorkshopInterested"
                             value={WorkshopInterested}
                             onChange={(e) => setWorkshopInterested(e.target.value)}
-                            className="form-input" // Re-use existing class for styling
+                            className="form-input"
                             required
                         >
                             {workshopOptions.map((workshop, index) => (
@@ -255,11 +252,24 @@ const RegisterPage = () => {
                         </select>
                     </div>
                 </div>
-                <button onClick={checkValidation} type="submit" className="submit-button auth-submit-button register-button-color">
-                    <UserPlus size={18} style={{ marginRight: '8px' }} /> Register
+                <button type="submit" className="submit-button auth-submit-button register-button-color" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : (
+                        <>
+                            <UserPlus size={18} style={{ marginRight: '8px' }} /> Register
+                        </>
+                    )}
                 </button>
                 <ToastContainer />
             </form>
+
+            {/* Hidden iframe to catch the form submission */}
+            <iframe
+                name="hidden_iframe"
+                onLoad={handleIframeLoad}
+                style={{ display: 'none' }}
+                title="Hidden iframe for form submission"
+            />
+
             <div className="auth-info-section">
                 <h3 className="auth-info-title">Workshop Registration Information</h3>
                 <p>Registering an account will allow you to sign up for upcoming workshops, view your registration history, and receive updates. </p>

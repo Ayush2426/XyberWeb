@@ -33,7 +33,7 @@ const Navbar = ({ currentTheme, setTheme, activePage }) => {
         { path: "/feedback", label: "Feedback" },
         { path: "/contact", label: "Contact" },
         { path: "/about", label: "About" },
-        { path: "/authentication", label: "Register/Login" }
+        { path: "/authentication", label: "Register" }
     ];
 
     const ThemeButton = ({ mode, Icon }) => (
@@ -420,14 +420,13 @@ export default function Feedback() { // Renamed from AuthModule to Feedback to m
                 {/* MODIFIED: ToastContainer moved here */}
                 <ToastContainer
                     position="top-right"
-                    autoClose={3000}
+                    autoClose={2000}
                     hideProgressBar={false}
                     newestOnTop={false}
                     closeOnClick
                     rtl={false}
                     pauseOnFocusLoss
                     draggable
-                    pauseOnHover
                     theme={theme === 'dark' ? 'dark' : 'light'}
                 />
                 <div className="app-container">
