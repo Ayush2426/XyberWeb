@@ -129,7 +129,7 @@ const FeedbackPage = () => (<PageSection title="Feedback"><p>Feedback Page Conte
 const ContactPage = () => (<PageSection title="Contact Us"><p>Contact Page Content...</p></PageSection>);
 const AboutPage = () => (<PageSection title="About Us"><p>About Page Content...</p></PageSection>);
 
-// --- RegisterPage Component (with loading/success toast flow) ---
+// --- RegisterPage Component (with final validation) ---
 const RegisterPage = () => {
     const [registerName, setRegisterName] = useState('');
     const [registerEmail, setRegisterEmail] = useState('');
@@ -152,22 +152,18 @@ const RegisterPage = () => {
     };
 
     const handleRegisterSubmit = (e) => {
-        // Prevent default form submission which reloads the page
         e.preventDefault();
 
-        // Validate form fields
+        // VALIDATION: Check all fields, including if at least one workshop is selected.
         if (!registerName || !registerEmail || !contactNumber || workshopInterested.length === 0) {
             toast.error("Please fill all fields and select at least one workshop.");
-            return;
+            return; // Stop the submission if validation fails
         }
 
-        // Set submitting state to disable the button
         setIsSubmitting(true);
 
-        // Create a promise that resolves after 2 seconds to simulate loading
         const submissionPromise = new Promise(resolve => setTimeout(resolve, 2000));
 
-        // Use toast.promise to handle the loading and success states
         toast.promise(
             submissionPromise,
             {
@@ -177,21 +173,18 @@ const RegisterPage = () => {
             }
         );
 
-        // Manually submit the form to the hidden iframe after showing the toast
         e.target.submit();
     };
 
     const handleIframeLoad = () => {
-        // This resets the form after the iframe has loaded the response from Google Apps Script
         if (isSubmitting) {
-            // A short delay to ensure user sees the success toast before form clears
             setTimeout(() => {
                 setRegisterName('');
                 setRegisterEmail('');
                 setContactNumber('');
                 setWorkshopInterested([]);
-                setIsSubmitting(false); // Re-enable the button
-            }, 500); // This can be adjusted or removed
+                setIsSubmitting(false);
+            }, 500);
         }
     };
 

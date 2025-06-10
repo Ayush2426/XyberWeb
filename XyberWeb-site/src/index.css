@@ -3836,20 +3836,17 @@ body.dark .icon-color-blue {
   box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.3);
 }
 
-/* --- Custom Checkbox Styles --- */
+/* --- Custom Checkbox Styles (Corrected for Theme Visibility) --- */
 
 /* Container for the group of checkboxes */
 .checkbox-group {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  /* Space between checkbox items */
   padding: 10px;
   border: 1px solid var(--border-color);
-  /* Uses your theme's border color */
   border-radius: 8px;
   background-color: var(--background-color-secondary);
-  /* A slightly different background */
 }
 
 /* Individual checkbox container (the label) */
@@ -3857,7 +3854,6 @@ body.dark .icon-color-blue {
   display: block;
   position: relative;
   padding-left: 35px;
-  /* Make room for the custom checkbox */
   cursor: pointer;
   font-size: 1rem;
   -webkit-user-select: none;
@@ -3865,7 +3861,6 @@ body.dark .icon-color-blue {
   -ms-user-select: none;
   user-select: none;
   color: var(--text-color);
-  transition: color 0.2s ease-in-out;
 }
 
 /* Hide the browser's default checkbox */
@@ -3877,7 +3872,7 @@ body.dark .icon-color-blue {
   width: 0;
 }
 
-/* The custom checkbox appearance */
+/* The custom checkbox box */
 .custom-checkbox {
   position: absolute;
   top: 0;
@@ -3886,45 +3881,47 @@ body.dark .icon-color-blue {
   width: 22px;
   background-color: var(--background-color);
   border: 2px solid gray;
-  /* Use a primary color for the border */
+  /* Default border uses theme color */
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
 }
 
-/* Change background on hover (but not on the checkmark itself) */
-.checkbox-container:hover input~.custom-checkbox {
-  background-color: #ccc;
-  /* A neutral hover color */
-}
+/* --- FIX APPLIED HERE --- */
 
-/* When the checkbox is checked, change the background color */
+/* 1. Style for when the box IS CHECKED */
 .checkbox-container input:checked~.custom-checkbox {
-  background-color: var(--primary-color);
-  /* Use primary color for checked state */
+  background-color: #808080;
+  /* Changed to gray */
+  border-color: #808080;
+  /* Changed to gray */
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
+/* 2. The checkmark symbol itself (initially hidden) */
 .custom-checkbox:after {
   content: "";
   position: absolute;
   display: none;
-}
-
-/* Show the checkmark when checked */
-.checkbox-container input:checked~.custom-checkbox:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.checkbox-container .custom-checkbox:after {
   left: 7px;
   top: 3px;
   width: 5px;
   height: 10px;
   border: solid white;
-  /* Checkmark color */
+  /* Checkmark color is white for contrast against the gray background */
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+/* 3. Show the checkmark ONLY when the input is checked */
+.checkbox-container input:checked~.custom-checkbox:after {
+  display: block;
+}
+
+/* 4. Apply a hover effect ONLY to UNCHECKED boxes.
+      This prevents the hover style from overriding the background
+      of a checked box, which was causing the visibility issue. */
+.checkbox-container:hover input:not(:checked)~.custom-checkbox {
+  border-color: #808080;
+  /* Changed to gray */
 }
