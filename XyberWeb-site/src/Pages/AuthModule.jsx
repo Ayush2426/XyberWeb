@@ -1,14 +1,14 @@
-import React, { useState, useEffect, createContext, useCallback } from 'react';
+// App.js
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { Sun, Moon, Laptop, Menu, X, UserPlus } from 'lucide-react';
+import { BrowserRouter, Routes, Route, Link, NavLink, Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
-// The direct CSS import is removed from here to prevent build errors.
-// It will be loaded dynamically via a <link> tag in the main component.
+import 'react-toastify/dist/ReactToastify.css';
 
 // --- Theme Context ---
 const ThemeContext = createContext();
 
-// --- Helper function to apply theme ---
-// This function manipulates the DOM and assumes CSS classes 'light' and 'dark' exist.
+// Helper function to apply theme
 const applyTheme = (theme) => {
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
@@ -21,24 +21,27 @@ const applyTheme = (theme) => {
     localStorage.setItem('theme', theme);
 };
 
-// --- Navbar Component ---
-const Navbar = ({ currentTheme, setTheme, activePage, setActivePage }) => {
+// --- Navbar Component (MODIFIED to use corrected paths) ---
+const Navbar = () => {
+    const { theme, setTheme } = useContext(ThemeContext);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    // Using paths for NavLink 'to' prop
     const navLinks = [
-        { id: "Home", label: "Home" },
-        { id: "Workshops", label: "Workshops" },
-        { id: "Gallery", label: "Gallery" },
-        { id: "Feedback", label: "Feedback" },
-        { id: "Contact", label: "Contact" },
-        { id: "About", label: "About" },
-        { id: "Register", label: "Register" }
+        { path: "/", label: "Home" },
+        { path: "/workshops", label: "Workshops" },
+        { path: "/gallery", label: "Gallery" },
+        { path: "/blog", label: "Blog" },
+        { path: "/feedback", label: "Feedback" },
+        { path: "/contact", label: "Contact" },
+        { path: "/about", label: "About" },
+        { path: "/authentication", label: "Register" } // Corrected path
     ];
 
     const ThemeButton = ({ mode, Icon }) => (
         <button
             onClick={() => setTheme(mode)}
-            className={`theme-button ${currentTheme === mode ? 'active' : ''}`}
+            className={`theme-button ${theme === mode ? 'active' : ''}`}
             aria-label={`Switch to ${mode} mode`}
         >
             <Icon size={20} />
@@ -47,13 +50,10 @@ const Navbar = ({ currentTheme, setTheme, activePage, setActivePage }) => {
 
     useEffect(() => {
         document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
+        return () => { document.body.style.overflow = 'unset'; };
     }, [isMobileMenuOpen]);
 
-    const handleLinkClick = (pageId) => {
-        setActivePage(pageId);
+    const handleMobileLinkClick = () => {
         setIsMobileMenuOpen(false);
     };
 
@@ -61,17 +61,18 @@ const Navbar = ({ currentTheme, setTheme, activePage, setActivePage }) => {
         <nav className="navbar">
             <div className="navbar-content">
                 <div className="navbar-brand-container">
-                    <a href="#" onClick={() => handleLinkClick('Home')} className="navbar-brand">XyberWeb</a>
+                    <Link to="/" className="navbar-brand" onClick={handleMobileLinkClick}>XyberWeb</Link>
                 </div>
                 <div className="navbar-links">
                     {navLinks.map((link) => (
-                        <a
-                            key={link.id}
-                            onClick={() => handleLinkClick(link.id)}
-                            className={activePage === link.id ? "navbar-link navbar-link-active" : "navbar-link"}
+                        <NavLink
+                            key={link.label}
+                            to={link.path}
+                            className={({ isActive }) => isActive ? "navbar-link navbar-link-active" : "navbar-link"}
+                            end={link.path === "/"} // 'end' prop for precise matching of root path
                         >
                             {link.label}
-                        </a>
+                        </NavLink>
                     ))}
                     <div className="theme-switcher">
                         <ThemeButton mode="light" Icon={Sun} />
@@ -89,13 +90,15 @@ const Navbar = ({ currentTheme, setTheme, activePage, setActivePage }) => {
                 <div className="mobile-menu">
                     <div className="mobile-menu-items">
                         {navLinks.map((link) => (
-                            <a
-                                key={link.id}
-                                onClick={() => handleLinkClick(link.id)}
-                                className={activePage === link.id ? "mobile-navbar-link mobile-navbar-link-active" : "mobile-navbar-link"}
+                            <NavLink
+                                key={link.label}
+                                to={link.path}
+                                className={({ isActive }) => isActive ? "mobile-navbar-link mobile-navbar-link-active" : "mobile-navbar-link"}
+                                onClick={handleMobileLinkClick}
+                                end={link.path === "/"}
                             >
                                 {link.label}
-                            </a>
+                            </NavLink>
                         ))}
                         <div className="mobile-theme-switcher">
                             <ThemeButton mode="light" Icon={Sun} />
@@ -121,15 +124,18 @@ const PageSection = ({ title, children, pageClass = "" }) => (
     </section>
 );
 
-// --- Page Components ---
-const HomePage = () => (<PageSection title="Welcome"><p>Home Page Content...</p></PageSection>);
-const WorkshopsPage = () => (<PageSection title="Workshops"><p>Workshops Page Content...</p></PageSection>);
-const GalleryPage = () => (<PageSection title="Gallery"><p>Gallery Page Content...</p></PageSection>);
-const FeedbackPage = () => (<PageSection title="Feedback"><p>Feedback Page Content...</p></PageSection>);
-const ContactPage = () => (<PageSection title="Contact Us"><p>Contact Page Content...</p></PageSection>);
-const AboutPage = () => (<PageSection title="About Us"><p>About Page Content...</p></PageSection>);
+// --- Page Components (Placeholders for routing) ---
+const HomePage = () => (<PageSection title="Welcome to XyberWeb"><p>This is the Home Page. Content will be added here.</p></PageSection>);
+const WorkshopsPage = () => (<PageSection title="Our Workshops"><p>Detailed information about our workshops will be available here soon. Stay tuned!</p></PageSection>);
+const GalleryPage = () => (<PageSection title="Gallery"><p>Gallery coming soon!</p></PageSection>);
+const BlogPage = () => (<PageSection title="Blog"><p>Blog posts coming soon!</p></PageSection>);
+const FeedbackPage = () => (<PageSection title="Feedback"><p>Feedback form coming soon!</p></PageSection>);
+const ContactPage = () => (<PageSection title="Contact Us"><p>Contact information coming soon!</p></PageSection>);
+const AboutPage = () => (<PageSection title="About XyberWeb"><p>More about us coming soon!</p></PageSection>);
 
-// --- RegisterPage Component (with final validation) ---
+
+// --- RegisterPage Component ---
+// --- RegisterPage Component ---
 const RegisterPage = () => {
     const [registerName, setRegisterName] = useState('');
     const [registerEmail, setRegisterEmail] = useState('');
@@ -244,7 +250,8 @@ const RegisterPage = () => {
     );
 };
 
-// --- Main App Component ---
+
+// --- Main App Component (MODIFIED to use correct routes) ---
 export default function AuthModule() {
     const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'system');
     const [activePage, setActivePage] = useState('Register');

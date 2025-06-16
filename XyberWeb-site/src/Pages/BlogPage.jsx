@@ -32,7 +32,7 @@ const Navbar = () => {
     { path: "/feedback", label: "Feedback" },
     { path: "/contact", label: "Contact" },
     { path: "/about", label: "About" },
-    { path: "/auth", label: "Register" }
+    { path: "/authentication", label: "Register" }
   ];
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -375,7 +375,7 @@ export default function Blog() {
             <Route path="/feedback" element={<FeedbackPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/authentication" element={<AuthPage />} />
             {/* Fallback 404 Page */}
             <Route path="*" element={<PageSection title="404 - Page Not Found"><p className="page-intro-text">Oops! The page you're looking for doesn't exist.</p></PageSection>} />
           </Routes>

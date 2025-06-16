@@ -260,27 +260,3 @@ export default function App() { // Renamed to App for clarity, can be LandingPag
         </ThemeContext.Provider>
     );
 }
-
-// --- General advice for responsiveness ---
-// 1. Viewport Meta Tag: Ensure your public/index.html has:
-//    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//
-// 2. CSS Media Queries: Use CSS media queries extensively to adapt styles for different screen sizes.
-//    Example:
-//    /* Base styles (mobile-first) */
-//    .navbar-links { display: none; }
-//    .mobile-menu-button-container { display: block; }
-//
-//    /* Larger screens */
-//    @media (min-width: 768px) {
-//      .navbar-links { display: flex; }
-//      .mobile-menu-button-container { display: none; }
-//    }
-//
-// 3. Flexbox & Grid: Utilize CSS Flexbox and Grid for layout, as they are inherently more responsive.
-//
-// 4. Test Thoroughly: Use browser developer tools to test on various device sizes.
-//
-// 5. Mobile Menu CSS: Pay close attention to the CSS for `.mobile-menu`, `.mobile-menu-items`,
-//    and their children to ensure they are styled correctly for an overlay or slide-in menu.
-//    This includes position (fixed/absolute), z-index, width/height, overflow, and transitions.
