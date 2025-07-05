@@ -221,7 +221,7 @@ const ContactPage = () => {
                             <Mail size={24} className="contact-detail-icon" />
                             <div>
                                 <strong>Email:</strong>
-                                <p><a href="mailto:webxyber@gmail.com" className="contact-link">webxyber@gmail.com</a></p>
+                                <p><a href="mailto:contact@xyberweb.in" className="contact-link">contact@xyberweb.in</a></p>
                             </div>
                         </div>
                         <div className="contact-detail-item">
